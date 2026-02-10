@@ -1,0 +1,14 @@
+<script>
+    
+// Merge X & Y (both desc) into Z (desc)
+let X = [9, 7, 5];
+let Y = [8, 6, 4];
+let Z = [];
+
+for(let i = 0; i < X.length; i++) Z.push(X[i]);
+for(let i = 0; i < Y.length; i++) Z.push(Y[i]);
+
+Z.sort((a,b) => b - a);   // descending sort
+
+document.write("31) Merged Descending: " + Z + "<br><br>");
+</script>

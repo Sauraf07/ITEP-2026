@@ -1,0 +1,9 @@
+<script>
+    let num = Number(prompt("Enter number"));
+let last = num % 10, t = num, p = 1;
+for (; t >= 10; t = Math.floor(t / 10)) p *= 10;
+let first = t;
+let mid = Math.floor((num % p) / 10);
+console.log(last * p + mid * 10 + first);
+
+</script>

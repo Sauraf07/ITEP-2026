@@ -1,0 +1,21 @@
+<script>
+    document.write("<center>Marks</center>")
+    function ispass(){
+        let s1 = prompt("Enter s1 marks ")*1
+    let s2 = prompt("Enter s2 marks ")*1
+    let s3 = prompt("Enter s3 marks ")*1
+    let s4 = prompt("Enter s4 marks ")*1
+    let s5 = prompt("Enter s5 marks ")*1
+    let total = s1+s2+s3+s4+s5
+        if(s1>=40&&s2>=40&&s3>=40&&s4>=40&&s5>=40){
+          document.write("Your are pass")
+          document.writeln("<br>total marks is "+total)
+        }
+        else
+        document.write("your are fail")
+       
+    }
+    ispass()
+</script>
+<!-- At first i take marks from user and all the marks should be grater than 40 then i use the if statement to check that all the marks
+  are more than 40 or not if the marks are more than 40in every subjects i consider as pass other wise fail.  -->

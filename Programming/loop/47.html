@@ -1,0 +1,15 @@
+<script>
+let start = Number(prompt("Enter starting number"));
+let end = Number(prompt("Enter ending number"));
+
+let i = start;
+while (i <= end) {
+    document.write("<br>Table of " + i + "<br>");
+    let j = 1;
+    while (j <= 10) {
+        document.write(i + " x " + j + " = " + (i * j) + "<br>");
+        j++;
+    }
+    i++;
+}
+</script>

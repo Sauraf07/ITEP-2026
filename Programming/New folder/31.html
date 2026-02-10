@@ -1,0 +1,18 @@
+<script>
+  document.write("15. Leap Year Check<br><br>");
+
+  var year = Number(prompt("Enter a year"));
+
+  if (year % 400 === 0) {
+    document.write("Leap Year");
+  }
+  else if (year % 100 === 0) {
+    document.write("Not a Leap Year");
+  }
+  else if (year % 4 === 0) {
+    document.write("Leap Year");
+  }
+  else {
+    document.write("Not a Leap Year");
+  }
+</script>

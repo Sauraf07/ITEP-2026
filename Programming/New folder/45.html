@@ -1,0 +1,23 @@
+<script>
+  document.write("29. Choice Based Operation<br><br>");
+
+  var a = Number(prompt("Enter first number"));
+  var b = Number(prompt("Enter second number"));
+  var choice = prompt("Enter choice (+, >, ==)");
+
+  if (choice === "+") {
+    document.write("Addition = " + (a + b));
+  }
+  else if (choice === ">") {
+    if (a > b) document.write(a + " is greater");
+    else if (b > a) document.write(b + " is greater");
+    else document.write("Both numbers are equal");
+  }
+  else if (choice === "==") {
+    if (a === b) document.write("Both numbers are equal");
+    else document.write("Numbers are not equal");
+  }
+  else {
+    document.write("Invalid Choice");
+  }
+</script>

@@ -1,0 +1,28 @@
+<script>
+  
+// Even from left, Odd from right
+let A32 = [3, 2, 1, 7, 6, 3];
+let B32 = [9, 3, 5, 6, 2, 8, 10];
+let C32 = new Array(A32.length + B32.length);
+
+let left = 0;
+let right = C32.length - 1;
+
+// From A
+for(let i = 0; i < A32.length; i++) {
+    if(A32[i] % 2 == 0)
+        C32[left++] = A32[i];
+    else
+        C32[right--] = A32[i];
+}
+
+// From B
+for(let i = 0; i < B32.length; i++) {
+    if(B32[i] % 2 == 0)
+        C32[left++] = B32[i];
+    else
+        C32[right--] = B32[i];
+}
+
+document.write("32) Resultant C Array: " + C32 + "<br><br>");
+</script>

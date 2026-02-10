@@ -1,0 +1,15 @@
+<script>
+    /* ---------------- Program 24 ---------------- */
+
+document.write(
+"24. How many bricks of size 25 cm × 10 cm × 7.5 cm are needed to build a wall 20 m × 2 m × 0.75 m? Also find the cost at Rs 900 per 1000 bricks.<br>"
+);
+
+var brickVol = 25 * 10 * 7.5;
+var wallVol = 2000 * 200 * 75;
+
+var bricks = wallVol / brickVol;
+var cost = (bricks / 1000) * 900;
+
+document.write("Bricks = " + bricks + " Cost = Rs " + cost + "<br><br>");
+</script>

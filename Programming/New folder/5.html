@@ -1,0 +1,19 @@
+<script>
+    document.write("5.Take input of age of 3 people by user and determine oldest and youngest among them.<br><br>")
+    var age1 = prompt("Enter 1st age") * 1
+    var age2 = prompt("Enter 2nd age") * 1
+    var age3 = prompt("Enter 3rd age") * 1
+    var max, mim
+    if (age1 > age2 && age1 > age3) {
+        document.write("<br> 1st Age is older <br>" + age1)
+        max = age1
+    }
+    else if (age2 > age3 && age2 > age1) {
+        document.write("<br> 2nd Age is older <br>" + age2)
+        max = age2
+    }
+    else
+        document.write("<br> 3rd Age is older <br>" + age3)
+    max = age3
+
+</script>

@@ -1,0 +1,20 @@
+<script>
+    let marks = Number(prompt("Enter student marks"));
+
+switch (true) {
+    case (marks >= 75):
+        document.write("Result: Distinction");
+        break;
+
+    case (marks >= 40):
+        document.write("Result: Pass");
+        break;
+
+    case (marks < 40):
+        document.write("Result: Fail");
+        break;
+
+    default:
+        document.write("Invalid Marks");
+}
+</script>

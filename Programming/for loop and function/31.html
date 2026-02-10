@@ -1,0 +1,10 @@
+<script>
+    let num = Number(prompt("Enter number"));
+let temp = num, sum = 0;
+for (; num > 0; num = Math.floor(num / 10)) {
+  let d = num % 10;
+  sum += d ** 3;
+}
+console.log(sum === temp ? "Armstrong" : "Not Armstrong");
+
+</script>

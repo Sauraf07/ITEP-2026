@@ -1,0 +1,16 @@
+<script>
+  document.write("14. Lowest among four numbers<br><br>");
+
+  var a = Number(prompt("Enter first number"));
+  var b = Number(prompt("Enter second number"));
+  var c = Number(prompt("Enter third number"));
+  var d = Number(prompt("Enter fourth number"));
+
+  var min = a;
+
+  if (b < min) min = b;
+  if (c < min) min = c;
+  if (d < min) min = d;
+
+  document.write("Lowest number is: " + min);
+</script>

@@ -1,0 +1,22 @@
+<script>
+    document.write("<center>Electricity Bill Calculation</center>")
+    function calcuateBill() {
+        let bill = 0
+        let units = prompt("enter you units") * 1
+        if (units <= 100) {
+            bill = unit * 2
+            document.write("total bill is " + bill)
+        }
+        if (units <= 200) {
+            bill = unit * 3
+            document.write("total bill is " + bill)
+        }
+        if (units > 200) {
+            bill = units * 5
+            document.writeln("total bill is " + bill)
+        }
+
+
+    }
+    calcuateBill(10)
+</script>

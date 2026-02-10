@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Priyam Kumar Mishra</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #ecf0f1;
+    --text-dark: #333;
+    --text-light: #666;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #e9ecef;
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.resume-container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--white);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    /* min-height removed to avoid 2 pages */
+}
+
+/* Left Column */
+.left-col {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.profile-img-container {
+    width: 150px;
+    height: 150px;
+    background-color: #bdc3c7;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 4px solid var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.skills-list, .languages-list, .hobbies-list {
+    list-style: none;
+}
+
+.skills-list li, .languages-list li, .hobbies-list li {
+    margin-bottom: 10px;
+}
+
+/* Right Column */
+.right-col {
+    padding: 40px;
+}
+
+.header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.header h2 {
+    color: var(--secondary-color);
+    letter-spacing: 2px;
+}
+
+.main-section {
+    margin-bottom: 20px;
+}
+
+.main-section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.edu-item {
+    margin-bottom: 15px;
+}
+
+.content-block ul {
+    list-style: none;
+}
+
+.content-block ul li {
+    padding-left: 15px;
+    position: relative;
+}
+
+.content-block ul li::before {
+    content: "►";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+}
+
+.declaration {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.signature-block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.signature-img {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+}
+
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--secondary-color);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+/* PRINT FIX */
+@media print {
+
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    body {
+        background: none;
+        padding: 0;
+    }
+
+    .resume-container {
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+
+    .left-col,
+    .right-col,
+    section,
+    .edu-item,
+    .content-block {
+        page-break-inside: avoid;
+    }
+
+    .fab {
+        display: none;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab" onclick="window.print()">
+    <i class="fas fa-file-pdf"></i>
+</button>
+
+<div class="resume-container">
+
+<div class="left-col">
+    <div class="profile-img-container">
+        <img src="./images/WhatsApp Image 2026-01-31 at 3.27.00 PM.jpeg">
+    </div>
+
+    <div class="sidebar-section">
+        <h3>Soft Skills</h3>
+        <ul class="skills-list">
+            <li>Good Communication</li>
+            <li>Positive Thinking</li>
+            <li>Team Work</li>
+            <li>Confidence</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-section">
+        <h3>Languages</h3>
+        <ul class="languages-list">
+            <li>Hindi (Fluent)</li>
+            <li>English (Fluent)</li>
+            <li>Tamil</li>
+            <li>Bhojpuri</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-section">
+        <h3>Hobbies</h3>
+        <ul class="hobbies-list">
+            <li>Listening to Music</li>
+            <li>Motivating Others</li>
+            <li>Learning New Skills</li>
+        </ul>
+    </div>
+</div>
+
+<div class="right-col">
+
+<header class="header">
+    <h1>Priyam Kumar Mishra</h1>
+    <h2>Information Technology Student</h2>
+</header>
+
+<section class="main-section">
+    <h3>Career Objective</h3>
+    <p>To build a successful career in the field of Information Technology by utilizing my skills and learning new technologies.</p>
+</section>
+
+<section class="main-section">
+    <h3>Education</h3>
+
+    <div class="edu-item">
+        <h4>B.Tech in Information Technology</h4>
+        <div>S.A Engineering College, Chennai</div>
+        <div>Pursuing</div>
+    </div>
+
+    <div class="edu-item">
+        <h4>Class 12th</h4>
+        <div>RNAR College, Samastipur</div>
+        <div>66.6%</div>
+    </div>
+
+    <div class="edu-item">
+        <h4>Class 10th</h4>
+        <div>High School Songar</div>
+        <div>72.4%</div>
+    </div>
+</section>
+
+<section class="main-section">
+    <h3>Technical Skills</h3>
+    <ul>
+        <li>Regression using Machine Learning</li>
+        <li>App Building</li>
+        <li>Debugging and Error Handling</li>
+        <li>CNN</li>
+        <li>Object Detection in MATLAB</li>
+    </ul>
+</section>
+
+<section class="main-section">
+    <h3>Strengths</h3>
+    <p>Confidence and positive attitude.</p>
+</section>
+
+<div class="declaration">
+    <p><strong>Declaration:</strong> I hereby declare that the above information is true.</p>
+
+    <div class="signature-block">
+        <div>
+            <p>Place: Chennai</p>
+            <p>Date: 01/02/2026</p>
+        </div>
+        <div>
+            <p>Signature:</p>
+            <div class="signature-img">Priyam Kumar Mishra</div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

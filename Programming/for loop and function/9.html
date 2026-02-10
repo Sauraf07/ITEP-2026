@@ -1,0 +1,7 @@
+<script>
+    let s = Number(prompt("Start year")), e = Number(prompt("End year"));
+for (; s <= e; s++)
+  if ((s % 4 === 0 && s % 100 !== 0) || s % 400 === 0)
+    console.log(s);
+
+</script>

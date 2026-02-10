@@ -1,0 +1,18 @@
+<script>
+    
+// Insertion Sort
+let arr37 = [12, 11, 13, 5, 6];
+
+for(let i = 1; i < arr37.length; i++) {
+    let key37 = arr37[i];
+    let j = i - 1;
+
+    while(j >= 0 && arr37[j] > key37) {
+        arr37[j + 1] = arr37[j];
+        j--;
+    }
+    arr37[j + 1] = key37;
+}
+document.write("37) Insertion Sort: " + arr37 + "<br><br>");
+
+</script>

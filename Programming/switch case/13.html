@@ -1,0 +1,19 @@
+<script>
+    let choice = prompt('Enter your choice \n1.Standard Delivery \n2.express delivery \n3.same day delivery') * 1;
+    let cost;
+    switch (choice) {
+        case 1: cost = 50;
+            document.write("Delivary type :standard ");
+            break;
+        case 2: cost = 100;
+            document.write("delivary type :express");
+            break;
+        case 3: cost = 200;
+            document.write("devivary type : same day");
+            break;
+        default: document.write('invalid choice...')
+    }
+    if (cost !== undefined) {
+        document.write("shipping cost is Rs:" + cost)
+    }
+</script>

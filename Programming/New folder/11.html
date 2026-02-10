@@ -1,0 +1,27 @@
+<script>
+    /*
+    11. Ask user to enter age, sex ( M or F ), marital status ( Y or N ) and then using following rules print their place of service.
+if employee is female, then she will work only in urban areas.
+if employee is a male and age is in between 20 to 40 then he may work in anywhere
+if employee is male and age is in between 40 t0 60 then he will work in urban areas only.
+And any other input of age should print "ERROR".  
+    */
+    var age = prompt("Enter Your Age") * 1;
+    var sex = prompt("Enter Your sex (M/F)");
+    var marital = prompt("Enter Your marital status ( Y / N )");
+
+    if (sex === "f" || sex === "F") {
+        document.write("<br> She will work only in urban areas")
+    }
+    else if ((sex === "F" || sex === "f") && age >= 20 && age <= 40) {
+        document.write("<br> he will work anywhere")
+    }
+    else if ((sex === "M" || sex === "m") && age > 40 && age <= 60) {
+        document.write("<br>He will work only in urban areas");
+    }
+    else {
+        document.write("<br>Error");
+    }
+
+
+</script>

@@ -1,0 +1,17 @@
+<script>
+let n = Number(prompt("Enter number of terms"));
+let i = 1;
+let up = 65;   // A
+let low = 98;  // b
+
+while (i <= n) {
+    if (i % 2 !== 0) {
+        document.write(String.fromCharCode(up) + " ");
+        up += 2;
+    } else {
+        document.write(String.fromCharCode(low) + " ");
+        low += 2;
+    }
+    i++;
+}
+</script>

@@ -1,0 +1,15 @@
+<script>
+let arr = [1, 2, 3, 4, 2, 5, 3, 6];
+let dubli = [];
+
+for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] === arr[j]) {
+            
+            duplicates.push(arr[i]);
+        }
+    }
+}  
+
+docunment.write("Duplicate elements:"+duplicates)
+</script>

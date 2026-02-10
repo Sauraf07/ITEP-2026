@@ -1,0 +1,13 @@
+<script>
+let a = Number(prompt("Enter first number"));
+let b = Number(prompt("Enter second number"));
+let max = (a > b) ? a : b;
+
+while (true) {
+    if (max % a === 0 && max % b === 0) {
+        document.write("LCM = " + max);
+        break;
+    }
+    max++;
+}
+</script>

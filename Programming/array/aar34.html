@@ -1,0 +1,90 @@
+
+
+
+<script>
+// ================= PROGRAM 23 =================
+// Sum and Average of array
+let arr23 = [10, 20, 30, 40, 50];
+let sum = 0;
+for(let i = 0; i < arr23.length; i++) {
+    sum += arr23[i];
+}
+let avg = sum / arr23.length;
+document.write("23) Sum = " + sum + "<br>");
+document.write("   Average = " + avg + "<br><br>");
+
+// ================= PROGRAM 33 =================
+// Binary Search Algorithm
+let arr33 = [2,4,6,8,10,12];
+let search33 = 8;
+let l = 0, h = arr33.length - 1;
+let ok = false;
+
+while(l <= h) {
+    let m = Math.floor((l + h)/2);
+    if(arr33[m] == search33) {
+        ok = true;
+        break;
+    }
+    else if(search33 < arr33[m])
+        h = m - 1;
+    else
+        l = m + 1;
+}
+
+document.write("33) Binary Search Result: " + (ok ? "Found" : "Not Found") + "<br><br>");
+
+
+// ================= PROGRAM 34 =================
+// Linear Search Algorithm
+let arr34 = [11, 22, 33, 44];
+let search34 = 33;
+let ok2 = false;
+
+for(let i = 0; i < arr34.length; i++) {
+    if(arr34[i] == search34) {
+        ok2 = true;
+        break;
+    }
+}
+document.write("34) Linear Search Result: " + (ok2 ? "Found" : "Not Found") + "<br><br>");
+
+
+// ================= PROGRAM 35 =================
+// Selection Sort
+let arr35 = [64, 25, 12, 22, 11];
+
+for(let i = 0; i < arr35.length; i++) {
+    let min = i;
+    for(let j = i + 1; j < arr35.length; j++) {
+        if(arr35[j] < arr35[min])
+            min = j;
+    }
+    let t = arr35[i];
+    arr35[i] = arr35[min];
+    arr35[min] = t;
+}
+document.write("35) Selection Sort: " + arr35 + "<br><br>");
+
+
+// ================= PROGRAM 36 =================
+// Bubble Sort
+let arr36 = [5, 1, 4, 2, 8];
+
+for(let i = 0; i < arr36.length; i++) {
+    for(let j = 0; j < arr36.length - i - 1; j++) {
+        if(arr36[j] > arr36[j+1]) {
+            let t = arr36[j];
+            arr36[j] = arr36[j+1];
+            arr36[j+1] = t;
+        }
+    }
+}
+document.write("36) Bubble Sort: " + arr36 + "<br><br>");
+
+
+
+</script>
+
+</body>
+</html>

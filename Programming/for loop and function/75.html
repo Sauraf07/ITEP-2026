@@ -1,0 +1,28 @@
+
+
+<script>
+let n = 5;
+
+// First row
+for (let j = 1; j <= n; j++) {
+    document.write("*");
+}
+document.write("<br>");
+
+// Remaining rows
+for (let i = 1; i < n; i++) {
+    document.write("*");
+
+    for (let space = 1; space <= n - i - 1; space++) {
+        document.write("&nbsp;");
+    }
+
+    if (i < n - 1) {
+        document.write("*");
+    }
+
+    document.write("<br>");
+}
+</script>
+
+

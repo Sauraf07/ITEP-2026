@@ -1,0 +1,42 @@
+<script>
+    document.write("<h2>🍽️ Welcome to Restaurant</h2>");
+document.write("1. Pizza - Rs 200<br>");
+document.write("2. Burger - Rs 150<br>");
+document.write("3. Pasta - Rs 180<br>");
+document.write("4. Sandwich - Rs 100<br><br>");
+
+let choice = Number(prompt("Enter your choice (1-4):"));
+let qty = Number(prompt("Enter quantity:"));
+let price = 0;
+
+switch (choice) {
+    case 1:
+        price = 200;
+        document.write("Item: Pizza<br>");
+        break;
+
+    case 2:
+        price = 150;
+        document.write("Item: Burger<br>");
+        break;
+
+    case 3:
+        price = 180;
+        document.write("Item: Pasta<br>");
+        break;
+
+    case 4:
+        price = 100;
+        document.write("Item: Sandwich<br>");
+        break;
+
+    default:
+        document.write("Invalid Choice");
+}
+
+if (price > 0) {
+    let total = price * qty;
+    document.write("Quantity: " + qty + "<br>");
+    document.write("Total Bill: Rs " + total);
+}
+</script>

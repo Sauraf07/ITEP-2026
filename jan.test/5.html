@@ -1,0 +1,23 @@
+<script>
+     document.write("<center>Shopping bill</center>")
+    function finalAmount() {
+        let discount = 0;
+        let amount = prompt("enter your amount") * 1
+
+        if (amount >= 10000) {
+            discount = 0.20;
+            amount = amount- (amount * discount)
+            document.write("total  amount after discount is " +amount)
+        }
+        else if (amount >= 5000){
+            discount = 0.10;
+            amount = amount - (amount * discount)
+            document.write("total  amount after discount is " +amount)
+    
+        }
+            
+}
+finalAmount()
+</script>
+<!-- if else is better because if checks that if the amount is grater than 10000 it gives a discount of 20%
+ and else if is better because if it is less than 10000 but grater than 5000 will get the discount of 10% -->

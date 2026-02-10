@@ -1,0 +1,10 @@
+<script>
+let start = Number(prompt("Enter start"));
+let end = Number(prompt("Enter end"));
+
+for (let n = start; n <= end; n++) {
+  let fact = 1;
+  for (let i = 1; i <= n; i++) fact *= i;
+  document.write("Factorial of " + n + " = " + fact + "<br>");
+}
+</script>

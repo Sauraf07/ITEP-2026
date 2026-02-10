@@ -1,0 +1,25 @@
+<script>
+    function pattern1() {
+  let n = 5;
+
+  // Top half
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    row += "*".repeat(i);
+    row += " ".repeat(2 * (n - i));
+    row += "*".repeat(i);
+    console.log(row);
+  }
+
+  // Bottom half
+  for (let i = n; i >= 1; i--) {
+    let row = "";
+    row += "*".repeat(i);
+    row += " ".repeat(2 * (n - i));
+    row += "*".repeat(i);
+    console.log(row);
+  }
+}
+pattern1();
+
+</script>

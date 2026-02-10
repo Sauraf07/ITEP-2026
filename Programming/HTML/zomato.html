@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Clone | Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(
+                rgba(0,0,0,0.45),
+                rgba(0,0,0,0.45)
+            ),
+            url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            color: white;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar ul li {
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* CENTER CONTENT */
+        .hero-content {
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 70px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 36px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* SEARCH BAR */
+        .search-box {
+            display: flex;
+            background: white;
+            width: 700px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .location {
+            width: 30%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            border-right: 1px solid #ccc;
+        }
+
+        .search {
+            width: 70%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 48px;
+            }
+
+            .tagline {
+                font-size: 22px;
+            }
+
+            .search-box {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .location,
+            .search {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div>Get the App</div>
+            <ul>
+                <li>Investor Relations</li>
+                <li>Add restaurant</li>
+                <li>Log in</li>
+                <li>Sign up</li>
+            </ul>
+        </div>
+
+        <!-- CENTER CONTENT -->
+        <div class="hero-content">
+            <div class="logo">zomato</div>
+            <div class="tagline">
+                Discover the best food & drinks in your city
+            </div>
+
+            <div class="search-box">
+                <input class="location" type="text" placeholder="📍 City">
+                <input class="search" type="text" placeholder="Search for restaurant, cuisine or dish">
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

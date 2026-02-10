@@ -1,0 +1,11 @@
+<script>
+    let num = Number(prompt("Enter number"));
+let temp = num, sum = 0;
+for (; num > 0; num = Math.floor(num / 10)) {
+  let d = num % 10, f = 1;
+  for (let i = 1; i <= d; i++) f *= i;
+  sum += f;
+}
+console.log(sum === temp ? "Strong" : "Not Strong");
+
+</script>

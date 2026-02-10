@@ -1,0 +1,8 @@
+<script>
+    let bin = Number(prompt("Binary"));
+let dec = 0, base = 1;
+for (; bin > 0; bin = Math.floor(bin / 10), base *= 2)
+  dec += (bin % 10) * base;
+console.log(dec);
+
+</script>

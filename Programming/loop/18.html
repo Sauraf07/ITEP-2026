@@ -1,0 +1,16 @@
+<script>
+let n = (prompt("Enter number of terms")*1);
+let i = 1;
+let num = 1;
+
+document.write("Series:<br>");
+
+while (i <= n) {
+    document.write(num + " ");
+    if (i == 1)
+        num = 2;
+    else
+        num = num * 2;
+    i++;
+}
+</script>

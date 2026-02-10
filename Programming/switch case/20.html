@@ -1,0 +1,35 @@
+<script>
+    document.write("<h2>Currency Conversion Menu</h2>");
+document.write("1. INR to USD<br>");
+document.write("2. INR to EUR<br>");
+document.write("3. USD to INR<br>");
+document.write("4. EUR to INR<br><br>");
+    let choice = Number(prompt("Enter your choice (1-4):"));
+let amount = Number(prompt("Enter amount:"));
+let result;
+
+switch (choice) {
+    case 1:
+        result = amount / 83;
+        document.write("INR " + amount + " = USD " + result.toFixed(2));
+        break;
+
+    case 2:
+        result = amount / 90;
+        document.write("INR " + amount + " = EUR " + result.toFixed(2));
+        break;
+
+    case 3:
+        result = amount * 83;
+        document.write("USD " + amount + " = INR " + result.toFixed(2));
+        break;
+
+    case 4:
+        result = amount * 90;
+        document.write("EUR " + amount + " = INR " + result.toFixed(2));
+        break;
+
+    default:
+        document.write("Invalid Choice");
+}
+</script>

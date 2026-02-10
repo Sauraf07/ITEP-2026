@@ -1,0 +1,14 @@
+<script>
+let a = Number(prompt("Enter first number"));
+let b = Number(prompt("Enter second number"));
+let hcf = 1;
+let i = 1;
+
+while (i <= a && i <= b) {
+    if (a % i === 0 && b % i === 0)
+        hcf = i;
+    i++;
+}
+
+document.write("HCF = " + hcf);
+</script>

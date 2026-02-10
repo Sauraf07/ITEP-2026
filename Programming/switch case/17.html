@@ -1,0 +1,24 @@
+<script>
+    let role = prompt("Enter your role \n1.admin \n2.editor \n3.user \n4.guest")*1;
+
+switch (role) {
+    case 1:
+        document.write("Access Granted: Full Access");
+        break;
+
+    case 2:
+        document.write("Access Granted: Edit Access");
+        break;
+
+    case 3:
+        document.write("Access Granted: View Access");
+        break;
+
+    case 4:
+        document.write("Access Granted: Limited Access");
+        break;
+
+    default:
+        document.write("Invalid Role");
+}
+</script>

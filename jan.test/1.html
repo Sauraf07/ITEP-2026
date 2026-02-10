@@ -1,0 +1,18 @@
+<script>
+    document.write("<center>Login Page</center>")
+    let username = "admin"
+    let password = "12345"
+    function login(username,passsword){
+        let user = prompt("enter your user name ")
+        let pass = prompt("eneter your passsword")
+        if(user==username&& pass == passsword){
+            document.writeln("succesfull login")
+        }
+        else
+        document.writeln("invalid user")
+
+    }
+    login(username,password)
+</script>
+
+<!-- if statement is used to check the user id and password is correct and let the user to login  -->

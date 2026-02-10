@@ -1,0 +1,14 @@
+<script>
+    function pattern2() {
+  let n = 5;
+
+  for (let i = n; i >= 1; i--) {
+    console.log("*".repeat(i) + " ".repeat(2 * (n - i)) + "*".repeat(i));
+  }
+  for (let i = 1; i <= n; i++) {
+    console.log("*".repeat(i) + " ".repeat(2 * (n - i)) + "*".repeat(i));
+  }
+}
+pattern2();
+
+</script>

@@ -1,0 +1,15 @@
+<script>
+let arr = [7, 10, 4, 3, 20, 15];
+let k =  3;
+
+// sort array
+arr.sort(function(a, b) {
+    return a - b;
+});
+
+let kthSmallest = arr[k - 1];
+let kthLargest = arr[arr.length - k];
+
+document.write("kth Smallest = " + kthSmallest + "<br>");
+document.write("kth Largest = " + kthLargest);
+</script>

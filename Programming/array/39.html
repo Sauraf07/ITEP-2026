@@ -1,0 +1,25 @@
+<script>
+// Binary Search (Ascending array)
+let AR = [5, 10, 15, 20, 25, 30];
+let key = 20;
+let low = 0, high = AR.length - 1;
+let flag = false;
+
+while(low <= high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if(AR[mid] == key) {
+        flag = true;
+        break;
+    }
+    else if(key < AR[mid])
+        high = mid - 1;
+    else
+        low = mid + 1;
+}
+
+if(flag)
+    document.write("29) Element Found using Binary Search<br><br>");
+else
+    document.write("29) Element Not Found<br><br>");
+</script>

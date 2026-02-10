@@ -1,0 +1,14 @@
+<script>
+let bin = Number(prompt("Enter binary number"));
+let dec = 0;
+let base = 1;
+
+while (bin > 0) {
+    let rem = bin % 10;
+    dec = dec + rem * base;
+    base = base * 2;
+    bin = Math.floor(bin / 10);
+}
+
+document.write("Decimal number = " + dec);
+</script>

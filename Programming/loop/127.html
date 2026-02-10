@@ -1,0 +1,18 @@
+<script>
+    function p1() {
+  let n = 5;
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    let stars = 2 * i - 1;
+    for (let j = 1; j <= stars; j++) {
+      if (i === n || j === 1 || j === stars)
+        row += "*";
+      else
+        row += "_";
+    }
+    console.log(row);
+  }
+}
+p1();
+
+</script>

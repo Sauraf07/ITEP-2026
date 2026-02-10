@@ -1,0 +1,13 @@
+<script>
+  document.write("25. Profit or Loss Calculation<br><br>");
+
+  var cp = Number(prompt("Enter Cost Price"));
+  var sp = Number(prompt("Enter Selling Price"));
+
+  if (sp > cp)
+    document.write("Profit = " + (sp - cp));
+  else if (cp > sp)
+    document.write("Loss = " + (cp - sp));
+  else
+    document.write("No Profit No Loss");
+</script>

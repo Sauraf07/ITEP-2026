@@ -1,0 +1,16 @@
+:root{
+  --amazon-blue: #131921;
+  --amazon-yellow: #ffb400;
+}
+body{font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+.bg-amazon{background: var(--amazon-blue) !important}
+.navbar-brand img{height:30px}
+.search-form input.form-control{min-width:300px}
+.hero{background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(250,250,250,0.85)); box-shadow: 0 2px 8px rgba(0,0,0,0.05)}
+.product-card img{object-fit:contain; height:220px}
+.product-card .card-body{padding:12px}
+.btn-warning{background:var(--amazon-yellow); border-color:var(--amazon-yellow)}
+
+@media (max-width: 768px){
+  .search-form input.form-control{min-width:140px}
+}

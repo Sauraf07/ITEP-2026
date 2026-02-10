@@ -1,0 +1,23 @@
+<script>
+let n = Number(prompt("Enter a number"));
+let temp = n;
+let sum = 0;
+
+while (n > 0) {
+    let d = n % 10;
+    let fact = 1;
+
+    while (d > 0) {
+        fact *= d;
+        d--;
+    }
+
+    sum += fact;
+    n = Math.floor(n / 10);
+}
+
+if (sum === temp)
+    document.write("Strong Number");
+else
+    document.write("Not a Strong Number");
+</script>

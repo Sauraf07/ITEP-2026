@@ -1,0 +1,133 @@
+
+
+<script>
+document.write("<center><h2>D-Mart</h2></center>");
+
+var name = prompt("Enter Customer Name");
+var gender = prompt("Enter Gender (M/F)");
+var date = new Date().toLocaleDateString();
+
+document.write("Name : " + name + "<span style='float:right'>Date : " + date + "</span><br>");
+document.write("------------------------------------------------------------<br>");
+document.write("Item Name&nbsp;&nbsp;Qty&nbsp;Price&nbsp;Total&nbsp;After Discount<br>");
+
+var totalBill = 0;
+
+/* -------- ITEM 1 -------- */
+var i1 = prompt("Enter Item-1 Name");
+var q1 = Number(prompt("Enter quantity of " + i1));
+var p1 = 10;
+var t1 = q1 * p1;
+var d1 = (q1 > 4) ? t1 * 0.05 : 0;
+var a1 = t1 - d1;
+totalBill += a1;
+document.write(i1 + "&nbsp;&nbsp;" + q1 + "&nbsp;&nbsp;" + p1 + "&nbsp;&nbsp;" + t1 + "&nbsp;&nbsp;" + a1 + "<br>");
+
+/* -------- ITEM 2 -------- */
+var i2 = prompt("Enter Item-2 Name");
+var q2 = Number(prompt("Enter quantity of " + i2));
+var p2 = 20;
+var t2 = q2 * p2;
+totalBill += t2;
+document.write(i2 + "&nbsp;&nbsp;" + q2 + "&nbsp;&nbsp;" + p2 + "&nbsp;&nbsp;" + t2 + "&nbsp;&nbsp;" + t2 + "<br>");
+
+/* -------- ITEM 3 -------- */
+var i3 = prompt("Enter Item-3 Name");
+var q3 = Number(prompt("Enter quantity of " + i3));
+var p3 = 30;
+var t3 = q3 * p3;
+totalBill += t3;
+document.write(i3 + "&nbsp;&nbsp;" + q3 + "&nbsp;&nbsp;" + p3 + "&nbsp;&nbsp;" + t3 + "&nbsp;&nbsp;" + t3 + "<br>");
+
+/* -------- ITEM 4 -------- */
+var i4 = prompt("Enter Item-4 Name");
+var q4 = Number(prompt("Enter quantity of " + i4));
+var p4 = 40;
+var t4 = q4 * p4;
+totalBill += t4;
+document.write(i4 + "&nbsp;&nbsp;" + q4 + "&nbsp;&nbsp;" + p4 + "&nbsp;&nbsp;" + t4 + "&nbsp;&nbsp;" + t4 + "<br>");
+
+/* -------- ITEM 5 (10% Discount) -------- */
+var i5 = prompt("Enter Item-5 Name");
+var q5 = Number(prompt("Enter quantity of " + i5));
+var p5 = 50;
+var t5 = q5 * p5;
+var d5 = t5 * 0.10;
+var a5 = t5 - d5;
+totalBill += a5;
+document.write(i5 + "&nbsp;&nbsp;" + q5 + "&nbsp;&nbsp;" + p5 + "&nbsp;&nbsp;" + t5 + "&nbsp;&nbsp;" + a5 + "<br>");
+
+/* ---------- ITEM 6 ---------- */
+var q6 = Number(prompt("Enter quantity of Item-6"));
+var p6 = 60;
+var t6 = q6 * p6;
+totalBill += t6;
+document.write("Item-6&nbsp;" + q6 + "&nbsp;&nbsp;" + p6 + "&nbsp;&nbsp;" + t6 + "&nbsp;&nbsp;" + t6 + "<br>");
+
+/* ---------- ITEM 7 ---------- */
+var q7 = Number(prompt("Enter quantity of Item-7"));
+var p7 = 70;
+var t7 = q7 * p7;
+totalBill += t7;
+document.write("Item-7&nbsp;" + q7 + "&nbsp;&nbsp;" + p7 + "&nbsp;&nbsp;" + t7 + "&nbsp;&nbsp;" + t7 + "<br>");
+
+/* ---------- ITEM 8 ---------- */
+var q8 = Number(prompt("Enter quantity of Item-8"));
+var p8 = 80;
+var t8 = q8 * p8;
+totalBill += t8;
+document.write("Item-8&nbsp;" + q8 + "&nbsp;&nbsp;" + p8 + "&nbsp;&nbsp;" + t8 + "&nbsp;&nbsp;" + t8 + "<br>");
+
+/* ---------- ITEM 9 ---------- */
+var q9 = Number(prompt("Enter quantity of Item-9"));
+var p9 = 90;
+var t9 = q9 * p9;
+totalBill += t9;
+document.write("Item-9&nbsp;" + q9 + "&nbsp;&nbsp;" + p9 + "&nbsp;&nbsp;" + t9 + "&nbsp;&nbsp;" + t9 + "<br>");
+
+/* -------- ITEM 10 (15% Discount) -------- */
+var i10 = prompt("Enter Item-10 Name");
+var q10 = Number(prompt("Enter quantity of " + i10));
+var p10 = 100;
+var t10 = q10 * p10;
+var d10 = t10 * 0.15;
+var a10 = t10 - d10;
+totalBill += a10;
+document.write(i10 + "&nbsp;&nbsp;" + q10 + "&nbsp;&nbsp;" + p10 + "&nbsp;&nbsp;" + t10 + "&nbsp;&nbsp;" + a10 + "<br>");
+
+document.write("------------------------------------------------------------<br>");
+
+/* -------- BILL DISCOUNT -------- */
+var billDiscount = 0;
+if (totalBill > 10000)
+  billDiscount = totalBill * 0.15;
+else if (totalBill >= 5000)
+  billDiscount = totalBill * 0.10;
+
+var afterDiscount = totalBill - billDiscount;
+var gst = afterDiscount * 0.10;
+
+/* -------- CARRY BAG -------- */
+var bag = prompt("Do you want carry bag? (Y/N)");
+var bagCharge = (bag === "Y" || bag === "y") ? 10 : 0;
+
+var finalAmount = afterDiscount + gst + bagCharge;
+
+document.write("A.P : " + totalBill + "<br>");
+document.write("D.P : " + afterDiscount + "<br>");
+
+if (gender === "F" || gender === "f")
+  document.write("Gift : Cadbury<br>");
+else
+  document.write("Gift : Leather Wallet<br>");
+
+document.write("Carry Bag : " + bagCharge + "<br>");
+document.write("GST (10%) : " + gst + "<br>");
+document.write("------------------------------------------------------------<br>");
+document.write("<b>Total Payable : " + finalAmount + " Rs</b><br><br>");
+
+document.write("<center>Thank You<br>To Visit<br>D-Mart</center>");
+</script>
+
+</body>
+</html>

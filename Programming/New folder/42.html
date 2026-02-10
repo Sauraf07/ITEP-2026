@@ -1,0 +1,21 @@
+<script>
+  document.write("26. Percentage and Grade Calculation<br><br>");
+
+  var p = Number(prompt("Enter Physics marks"));
+  var c = Number(prompt("Enter Chemistry marks"));
+  var b = Number(prompt("Enter Biology marks"));
+  var m = Number(prompt("Enter Mathematics marks"));
+  var comp = Number(prompt("Enter Computer marks"));
+
+  var total = p + c + b + m + comp;
+  var per = (total / 500) * 100;
+
+  document.write("Percentage = " + per + "%<br>");
+
+  if (per >= 90) document.write("Grade A");
+  else if (per >= 80) document.write("Grade B");
+  else if (per >= 70) document.write("Grade C");
+  else if (per >= 60) document.write("Grade D");
+  else if (per >= 40) document.write("Grade E");
+  else document.write("Grade F");
+</script>

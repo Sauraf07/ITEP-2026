@@ -1,0 +1,12 @@
+<script>
+    let n = prompt("enter the no") * 1;
+    let a = 0, b = 1;
+    let i = 1;
+    while (i <= n) {
+        document.write(a + " ");
+        let next = a + b;
+        a = b;
+        b = next;
+        i++;
+    }
+</script>

@@ -1,0 +1,10 @@
+<script>
+    let n = Number(prompt("Enter n"));
+let ch = 65;
+for (let i = 0; i < n; i++, ch++) {
+  console.log(i % 2 === 0
+    ? String.fromCharCode(ch)
+    : String.fromCharCode(ch + 32));
+}
+
+</script>

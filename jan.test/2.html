@@ -1,0 +1,24 @@
+<script>
+    document.write("<center>ATM </center>")
+    let min = 500
+    let balance = 5000
+    function withdraw(){
+        let amount = prompt("enter amount to widrawl")*1
+        if(amount>500){
+            if(balance>=min)
+            document.write("widrawl succesful")
+            balance = balance-amount
+            document.writeln("<br> remaining balance:"+balance)
+        }
+        if(min==500||min<0){
+            document.write("you cant widwarl the amount")
+        }
+        else
+        document.write("you can't widwarl is mininmum balance is 500")
+
+
+    }
+    withdraw()
+</script>
+<!-- i take min balance as 500 and maintain a balance amount of 5000 if the user enter the amount it give a 
+ amount that is under  -->
