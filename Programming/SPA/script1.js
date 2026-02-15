@@ -138,6 +138,7 @@ function HeaderComponent(){
     let cartBtn = document.createElement("button");
     cartBtn.className = "btn btn-warning me-2";
     cartBtn.innerHTML = `Cart (<span id="cart-count">0</span>)`;
+     cartBtn.style = "margin:10px; margin-border:50%";
     cartBtn.onclick = CartComponent;
 
     let authBtn = document.createElement("button");
@@ -300,6 +301,7 @@ function ViewMoreComponent(product){
    let cartBtn = document.createElement("button");
    cartBtn.className = "btn btn-success mt-3";
    cartBtn.innerText = "Add to Cart";
+   cartBtn.style ="margin:10px;"
    cartBtn.onclick = () => addToCart(product);
 
    let backBtn = document.createElement("button");
