@@ -1,0 +1,14 @@
+<script>
+  document.write("19. Type of Triangle<br><br>");
+
+  var a = Number(prompt("Enter first side"));
+  var b = Number(prompt("Enter second side"));
+  var c = Number(prompt("Enter third side"));
+
+  if (a === b && b === c)
+    document.write("Equilateral Triangle");
+  else if (a === b || b === c || a === c)
+    document.write("Isosceles Triangle");
+  else
+    document.write("Scalene Triangle");
+</script>

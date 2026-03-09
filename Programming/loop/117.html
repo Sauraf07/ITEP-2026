@@ -1,0 +1,17 @@
+<script>
+    function p5() {
+  let n = 5;
+  for (let i = n; i >= 1; i--) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      if (i === n || j === 1 || j === i)
+        row += String.fromCharCode(64 + j);
+      else
+        row += "_";
+    }
+    console.log(row);
+  }
+}
+p5();
+
+</script>

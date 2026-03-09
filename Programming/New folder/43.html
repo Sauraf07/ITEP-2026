@@ -1,0 +1,23 @@
+<script>
+  document.write("27. Gross Salary Calculation<br><br>");
+
+  var basic = Number(prompt("Enter Basic Salary"));
+  var hra, da;
+
+  if (basic <= 10000) {
+    hra = basic * 0.20;
+    da  = basic * 0.80;
+  } else if (basic <= 20000) {
+    hra = basic * 0.25;
+    da  = basic * 0.90;
+  } else {
+    hra = basic * 0.30;
+    da  = basic * 0.95;
+  }
+
+  var gross = basic + hra + da;
+
+  document.write("HRA = " + hra + "<br>");
+  document.write("DA = " + da + "<br>");
+  document.write("Gross Salary = " + gross);
+</script>

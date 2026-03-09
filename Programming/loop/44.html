@@ -1,0 +1,18 @@
+<script>
+let n = Number(prompt("Enter number"));
+let temp = n;
+let last = n % 10;
+let first;
+
+while (n >= 10) {
+    n = Math.floor(n / 10);
+}
+first = n;
+
+let digits = Math.floor(Math.log10(temp));
+let result = last * Math.pow(10, digits)
+           + (temp % Math.pow(10, digits)) - last
+           + first;
+
+document.write("Result = " + result);
+</script>

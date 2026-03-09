@@ -1,0 +1,17 @@
+<script>
+    function pattern7() {
+  let n = 5;
+  for (let i = n; i >= 1; i--) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      if (i === n || j === 1 || j === i)
+        row += "*";
+      else
+        row += " ";
+    }
+    console.log(row);
+  }
+}
+pattern7();
+
+</script>

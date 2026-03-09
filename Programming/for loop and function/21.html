@@ -1,0 +1,9 @@
+<script>
+    let s = Number(prompt("Start")), e = Number(prompt("End"));
+for (; s <= e; s++) {
+  console.log("Factors of", s);
+  for (let i = 1; i <= s; i++)
+    if (s % i === 0) console.log(i);
+}
+
+</script>

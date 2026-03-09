@@ -1,0 +1,8 @@
+<script>
+    let num = Number(prompt("Enter number"));
+let e = 0, o = 0;
+for (; num > 0; num = Math.floor(num / 10))
+  (num % 10) % 2 === 0 ? e++ : o++;
+console.log(e, o);
+
+</script>

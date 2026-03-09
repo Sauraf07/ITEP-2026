@@ -1,0 +1,11 @@
+<script>
+    document.write("7. A student will not be allowed to sit in exam if his/her attendence is less than 75%. Take following input from user Number of classes held Number of classes attended.And print percentage of class attended Is student is allowed to sit in exam or not.<br><br>")
+    var attend = prompt("Number of classes attended") * 1
+    var held = prompt("Number of classes held") * 1
+    var attendence,
+        attendence = (attend / held) * 100
+    if (attendence >= 75)
+        document.write("<br>You can attend the exam.. because your attendence is<br>" + attendence)
+    else
+        document.write("<br>you cannot attend the exam because your attendence is<br>" + attendence)
+</script>

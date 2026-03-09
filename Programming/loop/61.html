@@ -1,0 +1,9 @@
+<script>
+let start = Number(prompt("Enter start year"));
+let end = Number(prompt("Enter end year"));
+
+for (let y = start; y <= end; y++) {
+  if ((y % 400 === 0) || (y % 4 === 0 && y % 100 !== 0))
+    document.write(y + " Leap Year<br>");
+}
+</script>

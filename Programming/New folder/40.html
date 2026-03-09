@@ -1,0 +1,15 @@
+<script>
+  document.write("24. Count Currency Notes<br><br>");
+
+  var amt = Number(prompt("Enter amount"));
+
+  var notes = [500,200,100,50,20,10,5,2,1];
+
+  for (var i = 0; i < notes.length; i++) {
+    if (amt >= notes[i]) {
+      var count = Math.floor(amt / notes[i]);
+      document.write("Notes of " + notes[i] + " = " + count + "<br>");
+      amt = amt % notes[i];
+    }
+  }
+</script>

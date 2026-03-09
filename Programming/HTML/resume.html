@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Priyam Kumar Mishra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --secondary-color: #2980b9;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #5a6c7d;
+            --white: #ffffff;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+            color: var(--text-dark);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        /* --- Left Column --- */
+        .left-col {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            background-color: #444;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 5px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .contact-list i {
+            width: 20px;
+            margin-right: 12px;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .contact-list a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-list a:hover {
+            color: var(--white);
+        }
+
+        .skill-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* --- Right Column --- */
+        .right-col {
+            padding: 50px 40px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            border-left: 6px solid var(--secondary-color);
+            padding-left: 20px;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .header h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--secondary-color);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        .main-section {
+            margin-bottom: 35px;
+        }
+
+        .main-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-section h3 i {
+            color: var(--secondary-color);
+        }
+
+        .content-block {
+            padding-left: 28px;
+        }
+
+        .edu-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 1px solid #eee;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .edu-item h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .edu-item .school {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .edu-item .date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .tech-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .tech-skills-grid li::before {
+            content: "▹";
+            color: var(--secondary-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .declaration {
+            margin-top: 50px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .signature-block {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .signature-img {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+        }
+
+        /* --- UI Components --- */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary-color);
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            border: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .fab:hover { transform: translateY(-3px); background: var(--primary-color); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resume-container { grid-template-columns: 1fr; }
+            .left-col { order: 2; }
+            .header h1 { font-size: 2rem; }
+            .tech-skills-grid { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { padding: 0; background: white; }
+            .resume-container { box-shadow: none; width: 100%; border-radius: 0; }
+            .fab { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab" onclick="window.print()" title="Download PDF">
+        <i class="fas fa-download"></i>
+    </button>
+
+    <div class="resume-container">
+        <aside class="left-col">
+           
+
+            <section class="sidebar-section">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+            <li><i class="fas fa-phone"></i> +91 8002809608</li>
+            
+            <li>
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:priyamkumarmishra86@gmail.com">priyamkumarmishra86@gmail.com</a>
+            </li>
+
+            <li>
+                <i class="fab fa-github"></i> 
+                <a href="https://github.com/iampriyamkaushal" target="_blank">iampriyamkaushal</a>
+            </li>
+
+            <li>
+                <i class="fab fa-linkedin"></i> 
+                <a href="https://linkedin.com/in/priyam-mishra-17371b2a5" target="_blank"> Priyam Mishra</a>
+            </li>
+
+            <li><i class="fas fa-map-marker-alt"></i> Chennai, India</li>
+        </ul>
+            </section>
+
+            <section class="sidebar-section">
+                <h3>Soft Skills</h3>
+                <div class="skill-badge-container">
+                    <span class="skill-badge">Communication</span>
+                    <span class="skill-badge">Problem Solving</span>
+                    <span class="skill-badge">Team Work</span>
+                    <span class="skill-badge">Leadership</span>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h3>Languages</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-check"></i> Hindi (Native)</li>
+                    <li><i class="fas fa-check"></i> English (Professional)</li>
+                    <li><i class="fas fa-check"></i> Tamil</li>
+                    <li><i class="fas fa-check"></i> Bhojpuri</li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section">
+                <h3>Hobbies</h3>
+                <ul class="contact-list" style="font-size: 0.8rem; opacity: 0.9;">
+                    <li><i class="fas fa-headphones"></i> Music</li>
+                    <li><i class="fas fa-lightbulb"></i> Mentoring</li>
+                    <li><i class="fas fa-rocket"></i> Learning Tech</li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="right-col">
+            <header class="header">
+                <h1>Priyam Kumar<br>Mishra</h1>
+                <h2>Information Technology Student</h2>
+            </header>
+
+            <section class="main-section">
+                <h3><i class="fas fa-user-tag"></i> Profile</h3>
+                <div class="content-block">
+                    <p>Aspiring IT professional with a strong foundation in Deep Learning and App Development. Dedicated to leveraging technical expertise in Machine Learning to solve real-world problems while contributing to innovative organizational goals.</p>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <div class="content-block">
+                    <div class="edu-item">
+                        <div class="date">2023 - Present</div>
+                        <h4>B.Tech in Information Technology</h4>
+                        <div class="school">S.A Engineering College, Chennai</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="date">2021 - 2023</div>
+                        <h4>Higher Secondary (Class 12th)</h4>
+                        <div class="school">RNAR College, Samastipur</div>
+                        <p>Score: 66.6%</p>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="date">2021</div>
+                        <h4>High School (Class 10th)</h4>
+                        <div class="school">High School Songar</div>
+                        <p>Score: 72.4%</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h3><i class="fas fa-code"></i> Technical Expertise</h3>
+                <div class="content-block">
+                    <ul class="tech-skills-grid">
+                        <li>Machine Learning (Regression)</li>
+                        <li>App Development</li>
+                        <li>Deep Learning (CNN)</li>
+                        <li>MATLAB Object Detection</li>
+                        <li>Debugging & Optimization</li>
+                        <li>Data Analysis</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h3><i class="fas fa-star"></i> Core Strengths</h3>
+                <div class="content-block">
+                    <p>Highly resilient with a <strong>positive growth mindset</strong>. Proven ability to handle high-pressure situations with confidence and a systematic approach to debugging complex technical issues.</p>
+                </div>
+            </section>
+
+            <div class="declaration">
+                <p>I hereby declare that the information provided is authentic and correct to the best of my knowledge.</p>
+                <div class="signature-block">
+                    <div class="place-date">
+                        <p><strong>Place:</strong> Chennai</p>
+                        <p><strong>Date:</strong> Feb 01, 2026</p>
+                    </div>
+                    <div class="signature">
+                        <div class="signature-img">Priyam Kumar Mishra</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

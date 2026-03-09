@@ -1,0 +1,12 @@
+<script>
+
+// Merge A (asc) and B (desc) into C (asc)
+let A = [2, 4, 6, 8];
+let B = [9, 7, 5, 3];
+let C = [];
+
+for(let i = 0; i < A.length; i++) C.push(A[i]);
+for(let i = B.length - 1; i >= 0; i--) C.push(B[i]);
+
+document.write("30) Merged Array Ascending: " + C + "<br><br>");
+</script>

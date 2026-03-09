@@ -1,0 +1,11 @@
+<script>
+    document.write("2.A shop will give discount of 10% if the cost of purchased quantity is more than 1000. Ask user for quantity Suppose, one unit will cost 100.Judge and print total cost for user.")
+    var price = prompt("Enter the quantity") * 1
+    var dis, totalcost
+    if (price >= 1000){
+        dis = (price * 10) / 100
+    totalcost = price - dis
+    document.write("<br> Total cost...." + totalcost)
+     } else 
+    document.write("<br> you will not get discount")
+</script>

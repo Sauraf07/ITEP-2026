@@ -1,0 +1,14 @@
+<script>
+let start = Number(prompt("Enter start"));
+let end = Number(prompt("Enter end"));
+
+for (let n = start; n <= end; n++) {
+  let temp = n, sum = 0;
+  while (temp > 0) {
+    let d = temp % 10;
+    sum += d * d * d;
+    temp = Math.floor(temp / 10);
+  }
+  if (sum === n) document.write(n + " Armstrong<br>");
+}
+</script>

@@ -1,0 +1,18 @@
+<script>
+    function p3() {
+  let n = 5;
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    let cols = 2 * i - 1;
+    for (let j = 1; j <= cols; j++) {
+      if (i === n || j === 1 || j === cols)
+        row += "1";
+      else
+        row += "*";
+    }
+    console.log(row);
+  }
+}
+p3();
+
+</script>

@@ -1,0 +1,20 @@
+<script>
+    let choice = prompt("Enter \n1.Addition \n2.Substraction \n3.Multiplication \n4.Division") * 1;
+    let a, b;
+     if(choice==1||choice==2||choice==3||choice==4){
+    a = prompt("Enter the 1st no.")*1;
+    b = prompt("Enter the 2nd no.")*1;
+     }
+    switch (choice) {
+        case 1: document.write("Addition is " + (a + b) + "<br>")
+            break;
+        case 2: document.write("Substraction is" + (a - b) + "<br>")
+            break;
+        case 3: document.write("Multipication is" + (a * b) + "<br>")
+            break;
+        case 4: document.write("Division is" + (a / b) + "<br>")
+            break;
+        default: document.write("Invalid Choice...")
+
+    }
+</script>

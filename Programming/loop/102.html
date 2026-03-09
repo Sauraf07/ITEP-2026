@@ -1,0 +1,16 @@
+<script>
+    function p4() {
+  let n = 6;
+  for (let i = n; i >= 1; i--) {
+    let row = "";
+    if (i % 2 === 0) {
+      for (let j = 1; j <= i; j++) row += j;
+    } else {
+      for (let j = i; j >= 1; j--) row += j;
+    }
+    console.log(row);
+  }
+}
+p4();
+
+</script>

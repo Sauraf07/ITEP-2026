@@ -1,0 +1,29 @@
+<script>
+    /* 
+    15. Write a java program to accept the cost price of a bike
+    and display the road tax to be paid according to the 
+    following criteria.
+    Cost Price(In Rs)		Tax
+     > 100000			 15%
+     >50000 and <=100000	 10%
+     <=50000			 5%	
+    */
+    var cost = (prompt("Enter the cost price of the bike") * 1);
+    var tax;
+
+    if (cost > 100000) {
+        tax = cost * 0.15;
+        document.write("Road Tax to be paid: Rs " + tax);
+    }
+    else if (cost > 50000 && cost <= 100000) {
+        tax = cost * 0.10;
+        document.write("Road Tax to be paid: Rs " + tax);
+    }
+    else if (cost <= 50000) {
+        tax = cost * 0.05;
+        document.write("Road Tax to be paid: Rs " + tax);
+    }
+    else {
+        document.write("Invalid Input");
+    }
+</script>

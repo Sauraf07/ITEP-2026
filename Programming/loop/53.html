@@ -1,0 +1,15 @@
+<script>
+let start = Number(prompt("Enter start"));
+let end = Number(prompt("Enter end"));
+
+for (let n = start; n <= end; n++) {
+  let temp = n, sum = 0;
+  while (temp > 0) {
+    let d = temp % 10, fact = 1;
+    for (let i = 1; i <= d; i++) fact *= i;
+    sum += fact;
+    temp = Math.floor(temp / 10);
+  }
+  if (sum === n) document.write(n + " Strong<br>");
+}
+</script>

@@ -1,0 +1,29 @@
+<script>
+
+let units = Number(prompt("Enter total electricity units"));
+let bill = 0;
+
+switch (true) {
+
+    case (units <= 50):
+        bill = units * 0.50;
+        break;
+
+    case (units <= 150):
+        bill = (50 * 0.50) + ((units - 50) * 0.75);
+        break;
+
+    case (units <= 250):
+        bill = (50 * 0.50) + (100 * 0.75) + ((units - 150) * 1.20);
+        break;
+
+    case (units > 250):
+        bill = (50 * 0.50) + (100 * 0.75) + (100 * 1.20) + ((units - 250) * 1.50);
+        break;
+
+    default:
+        document.write("Invalid Input");
+}
+
+document.write("Total Electricity Bill = Rs " + bill.toFixed(2));
+</script>

@@ -1,0 +1,15 @@
+<script>
+    let year = prompt("enter year") * 1;
+    switch (true) {
+        case (year % 400 === 0):
+            document.write(year + "is leap year");
+            break;
+        case (year % 100 === 0):
+            document.write(year + "is not a leap year");
+            break;
+        case (year % 4 === 0):
+            document.write(year + "is a leap year");
+            break;
+        default: document.write(year + "is not a leap year")
+    }
+</script>

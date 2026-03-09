@@ -1,0 +1,24 @@
+<script>
+  document.write("13. Arithmetic Operations using switch case<br><br>");
+
+  var a = Number(prompt("Enter first number"));
+  var b = Number(prompt("Enter second number"));
+  var op = prompt("Enter operator (+, -, *, /)");
+
+  switch (op) {
+    case '+':
+      document.write("Result = " + (a + b));
+      break;
+    case '-':
+      document.write("Result = " + (a - b));
+      break;
+    case '*':
+      document.write("Result = " + (a * b));
+      break;
+    case '/':
+      document.write("Result = " + (a / b));
+      break;
+    default:
+      document.write("Invalid Operator");
+  }
+</script>

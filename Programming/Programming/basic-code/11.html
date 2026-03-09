@@ -1,0 +1,17 @@
+<script>
+    /* ---------------- Program 11 ---------------- */
+
+document.write(
+"11. The base and height of a triangle are in the ratio 8 : 5 and its area is 320 m². Find the base and height.<br>"
+);
+
+var area = 320;
+var baseRatio = 8;
+var heightRatio = 5;
+
+var k = Math.sqrt((2 * area) / (baseRatio * heightRatio));
+var base = baseRatio * k;
+var height = heightRatio * k;
+
+document.write("Base = " + base + " Height = " + height + "<br><br>");
+</script>

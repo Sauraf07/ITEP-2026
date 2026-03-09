@@ -1,0 +1,20 @@
+<script>
+  document.write("16. Temperature Conversion<br><br>");
+
+  var choice = prompt("Enter choice (C/F)");
+  var temp, result;
+
+  if (choice === 'C' || choice === 'c') {
+    temp = Number(prompt("Enter temperature in Fahrenheit"));
+    result = (temp - 32) * 5 / 9;
+    document.write("Temperature in Celsius = " + result);
+  }
+  else if (choice === 'F' || choice === 'f') {
+    temp = Number(prompt("Enter temperature in Celsius"));
+    result = (temp * 9 / 5) + 32;
+    document.write("Temperature in Fahrenheit = " + result);
+  }
+  else {
+    document.write("Invalid Choice");
+  }
+</script>

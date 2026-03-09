@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopClone — Demo E‑commerce</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">ShopClone</div>
+      <div class="search">
+        <input id="search" placeholder="Search products..." />
+      </div>
+      <div class="actions">
+        <button id="cartButton" class="cart-btn">Cart (<span id="cartCount">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="products" id="productGrid">
+      <article class="product">
+        <img src="https://via.placeholder.com/360x240?text=Sneakers" alt="Sneakers" />
+        <h3 class="title">Retro Sneakers</h3>
+        <p class="price">$69.00</p>
+        <button class="btn add-to-cart" data-id="1" data-name="Retro Sneakers" data-price="69">Add to cart</button>
+      </article>
+
+      <article class="product">
+        <img src="https://via.placeholder.com/360x240?text=Watch" alt="Watch" />
+        <h3 class="title">Classic Watch</h3>
+        <p class="price">$129.00</p>
+        <button class="btn add-to-cart" data-id="2" data-name="Classic Watch" data-price="129">Add to cart</button>
+      </article>
+
+      <article class="product">
+        <img src="https://via.placeholder.com/360x240?text=Backpack" alt="Backpack" />
+        <h3 class="title">Travel Backpack</h3>
+        <p class="price">$89.00</p>
+        <button class="btn add-to-cart" data-id="3" data-name="Travel Backpack" data-price="89">Add to cart</button>
+      </article>
+
+      <article class="product">
+        <img src="https://via.placeholder.com/360x240?text=Headphones" alt="Headphones" />
+        <h3 class="title">Wireless Headphones</h3>
+        <p class="price">$149.00</p>
+        <button class="btn add-to-cart" data-id="4" data-name="Wireless Headphones" data-price="149">Add to cart</button>
+      </article>
+    </section>
+  </main>
+
+  <aside id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button id="closeCart" class="close">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total">Total: $<span id="cartTotal">0.00</span></div>
+      <button id="checkout" class="btn primary">Checkout</button>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

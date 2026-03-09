@@ -1,0 +1,27 @@
+<script>
+    /*14.Write a program to accept percantage from the user and
+display grade according to the following criteria
+  Marks	  		Grade
+  > 90       		 A
+  >80 and <=90		 B
+  >=60 and <=80		 C
+  below 60		 D
+  */
+    var per = (prompt("Enter your percentage") * 1);
+
+    if (per > 90) {
+        document.write("Grade A");
+    }
+    else if (per > 80 && per <= 90) {
+        document.write("Grade B");
+    }
+    else if (per >= 60 && per <= 80) {
+        document.write("Grade C");
+    }
+    else if (per < 60) {
+        document.write("Grade D");
+    }
+    else {
+        document.write("Invalid Input");
+    }
+</script>

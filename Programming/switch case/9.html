@@ -1,0 +1,24 @@
+<script>
+    let option = prompt("Menu Options \n1. Balance Check \n2. Withdraw Money \n3.Deposit Money \n4. Exit ")*1
+    let Balance = 1000;
+    
+        switch (option) {
+            case 1: document.write("Your Account Balance is:<br>" + Balance)
+                break;
+            case 2: let Withdraw = prompt("Enter the amount to widrawal");
+                if (Withdraw <= Balance)
+                    document.write("Widrawal succesfull... Remaining Balnace is " + (Balance - Withdraw))
+                else
+                    document.write("insufficient Balance")
+                break;
+            case 3: let Deposit = prompt("Enter the amount to deposit")*1
+                Balance = Balance + Deposit
+                document.write("Amount Deposited Succesfull.<br>")
+                document.write("Total Balance Is Rs:" + Balance)
+                break;
+            case 4: document.write("Thank You For Visiting ")
+                break;
+            default: document.write("invalid choice...")
+        }
+
+</script>

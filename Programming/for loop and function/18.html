@@ -1,0 +1,9 @@
+<script>
+    let s = Number(prompt("Start")), e = Number(prompt("End"));
+for (; s <= e; s++) {
+  let n = s, sum = 0;
+  for (; n > 0; n = Math.floor(n / 10)) sum += (n % 10) ** 3;
+  if (sum === s) console.log(s);
+}
+
+</script>

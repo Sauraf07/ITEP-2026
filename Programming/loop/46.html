@@ -1,0 +1,11 @@
+<script>
+let n = Number(prompt("Enter number"));
+let last = n % 10;
+
+while (n >= 10) {
+    n = Math.floor(n / 10);
+}
+
+let first = n;
+document.write("Sum = " + (first + last));
+</script>

@@ -1,0 +1,9 @@
+<script>
+    let s = Number(prompt("Start")), e = Number(prompt("End"));
+for (; s <= e; s++) {
+  let n = s, r = 0;
+  for (; n > 0; n = Math.floor(n / 10)) r = r * 10 + n % 10;
+  if (r === s) console.log(s);
+}
+
+</script>

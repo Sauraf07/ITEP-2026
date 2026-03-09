@@ -1,0 +1,15 @@
+<script>
+let n = Number(prompt("Enter a number"));
+let temp = n;
+let rev = 0;
+
+while (n > 0) {
+    rev = rev * 10 + (n % 10);
+    n = Math.floor(n / 10);
+}
+
+if (temp === rev)
+    document.write("Palindrome Number");
+else
+    document.write("Not a Palindrome Number");
+</script>

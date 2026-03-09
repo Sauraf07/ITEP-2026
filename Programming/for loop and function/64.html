@@ -1,0 +1,9 @@
+<script>
+    let num = Number(prompt("Enter number"));
+let prime = num > 1;
+for (let i = 2; i <= num / 2; i++) {
+  if (num % i === 0) prime = false;
+}
+console.log(prime ? "Prime" : "Not Prime");
+
+</script>

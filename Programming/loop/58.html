@@ -1,0 +1,11 @@
+<script>
+let n = Number(prompt("Enter decimal number"));
+let bin = "";
+
+if (n === 0) bin = "0";
+while (n > 0) {
+  bin = (n % 2) + bin;
+  n = Math.floor(n / 2);
+}
+document.write("Binary = " + bin);
+</script>
