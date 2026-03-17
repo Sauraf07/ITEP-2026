@@ -72,3 +72,9 @@ const styles = {
 };
 
 export default DataComponent;
+
+/* this  application is made by react.js.
+ it has a list of items based on how to cook recipies that is easy and simple.
+  and easy to cook based on that it has given all the materials what is required to make this recipes items .
+  it has multiple 
+*/

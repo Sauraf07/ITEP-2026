@@ -4,7 +4,6 @@ import "./models/subject.model.js";
 import "./models/careerpath.model.js";
 import "./models/roadmap.model.js";
 import "./models/dailytask.model.js";
-
 import authRoutes from "./routers/auth.router.js";
 import profileRoutes from "./routers/profile.router.js";
 import subjectRoutes from "./routers/subject.router.js";
@@ -18,12 +17,11 @@ import sequelize from "./config/database.js";
 
 const app = express();
 
-// ⭐ Middleware FIRST
 app.use(errorHandler);
 app.use(bodyParser.json());
 app.use(express.json());
 
-// Routes AFTER middleware
+
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/subjects", subjectRoutes);
