@@ -16,5 +16,11 @@ export default [
         name:"sita",
         branch:"CV",
         gender: "Female"
+    },
+    {
+        roll: 104,
+        name: "Gaurav",
+        branch: "MECH",
+        gender: "MAle"
     }
 ]
