@@ -15,15 +15,16 @@ function App() {
   let titleref = useRef(null);
   let priorityref = useRef(null);
 
-  const addtask = ()=>{
+  const addTask = ()=>{
     let title = titleref.current.value;
     let pid = priorityref.current.value;
     let date = new Date();
-    date = date.getDate()+"/"(date.getMonth()-1)+"/"(date.getFullYear());
+    date = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
     let status = "active";
-    let newtask = [title,pid,date,status];
-    settaskList([...tasklist,newtask])
+    let newTask = {title,pid,date,status};
+    settaskList([...tasklist,newTask]);
   }
+ 
   const changestatus = (task,newstatus)=>{
     let index = tasklist.findIndex((obj)=>{return obj.title==task.title});
     tasklist.splice(index,1);
@@ -52,7 +53,7 @@ function App() {
           </div>
           <div className='row mt-2'>
             <div className='col-md-6'>
-              <button onClick={addtask} className='btn btn-success'>ADD</button>
+              <button onClick={addTask} className='btn btn-success'>ADD</button>
             </div>
           </div>
         </div>
