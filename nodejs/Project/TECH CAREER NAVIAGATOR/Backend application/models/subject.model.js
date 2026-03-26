@@ -10,11 +10,13 @@ const Subject = sequelize.define("Subject", {
   },
 
   user_id: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    allowNull: false   
   },
 
   subject_name: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false   
   },
 
   is_important: {

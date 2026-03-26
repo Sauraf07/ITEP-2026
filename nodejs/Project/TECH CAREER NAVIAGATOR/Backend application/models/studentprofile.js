@@ -1,3 +1,4 @@
+
 import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 
@@ -10,17 +11,18 @@ const StudentProfile = sequelize.define("StudentProfile", {
   },
 
   user_id: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    allowNull: false   
   },
 
   course: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false
   },
-
   semester: {
-    type: DataTypes.INTEGER
-  }
+    type: DataTypes.INTEGER,
+    allowNull: false 
 
-});
+}})
 
 export default StudentProfile;

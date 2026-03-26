@@ -1,81 +1,96 @@
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
-import bcrypt from "bcrypt";
 
-export const registerUser = async (req, res) => {
+const JWT_SECRET = process.env.JWT_SECRET || "techcareer_secret_key_2024";
+const JWT_EXPIRES_IN = "7d";
+
+export const registerUser = async (req, res, next) => {
   try {
-
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({
-        message: "All fields are required"
+        message: "Please provide name, email and password"
       });
     }
 
-    const existingUser = await User.findOne({
-      where: { email }
-    });
-
+    const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
-      return res.status(400).json({
-        message: "Email already exists"
+      return res.status(409).json({
+        message: "Email already registered. Please login."
       });
     }
-     const hashedPassword = await bcrypt.hash(password,10);
-    const user = await User.create({
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = await User.create({
       name,
       email,
-      password
+      password: hashedPassword
     });
 
-    res.status(201).json({
+    const token = jwt.sign(
+      { id: newUser.id, email: newUser.email },
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRES_IN }
+    );
+    return res.status(201).json({
       message: "User registered successfully",
-      user
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email
+      }
     });
 
   } catch (error) {
-
-    console.error(error);
-
-    res.status(500).json({
-      message: "Server error"
-    });
-
+    next(error);
   }
 };
 
-export const loginUser = async (req, res) => {
-
+export const loginUser = async (req, res, next) => {
   try {
-
     const { email, password } = req.body;
 
-    const user = await User.findOne({
-      where: { email }
-    });
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Please provide email and password"
+      });
+    }
 
+    const user = await User.findOne({ where: { email } });
     if (!user) {
       return res.status(404).json({
-        message: "User not found"
+        message: "User not found. Please register first."
       });
     }
 
-    if (user.password !== password) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
       return res.status(401).json({
-        message: "Invalid password"
+        message: "Invalid password. Please try again."
       });
     }
 
-    res.json({
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRES_IN }
+    );
+
+    return res.status(200).json({
       message: "Login successful",
-      user
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
     });
 
   } catch (error) {
-
-    res.status(500).json({
-      message: "Server error"
-    });
-
+    next(error);
   }
 };
