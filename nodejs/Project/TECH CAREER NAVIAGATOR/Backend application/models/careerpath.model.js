@@ -9,8 +9,18 @@ const CareerPath = sequelize.define("CareerPath", {
     primaryKey: true
   },
 
-  name: {
-    type: DataTypes.STRING
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+
+  career_field: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+
+  description: {
+    type: DataTypes.TEXT
   }
 
 });

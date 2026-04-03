@@ -1,21 +1,46 @@
-import { BrowserRouter, Link } from "react-router-dom";
-import RouteConfig from "./routeconfig";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/home";
+import Categories from "./components/Catagory";
+import Product from "./components/Product";
+import ViewMore from "./components/viewmore";
+import BuyNow from "./components/BuyNow";
+import SignIn from "./components/user/SignIn";
+import SignUp from "./components/user/SignUp";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import Auth from "./components/Auth";
+import SignOut from "./components/user/SignOut";
 function App() {
-  return <>
-   <BrowserRouter>
-      <div className="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div className="navbar-nav mx-auto">
-          <Link to="/" className="nav-link px-3">Home</Link>
-          <Link to="/about" className="nav-link px-3">About</Link>
-          <Link to="/contact" className="nav-link px-3">Contact us</Link>
-        </div>
-      </div>
-
-      <RouteConfig />
-    </BrowserRouter>
-  </>
-   
+  return (
+    <>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="category" element={<Categories />} />
+        <Route path="product" element={<Product />} />
+        <Route
+          path="view-more/:id"
+          element={
+            <Auth>
+              <ViewMore />
+            </Auth>
+          }
+        />
+        <Route
+          path="buy-now"
+          element={
+            <Auth>
+              <BuyNow />
+            </Auth>
+          }
+        />
+        <Route path="sign-in" element={<SignIn />} />
+        <Route path="sign-up" element={<SignUp />} />
+        {/* <Route path='sign-out' element={<SignOut/>}/> */}
+      </Routes>
+    </>
+  );
 }
 
 export default App;

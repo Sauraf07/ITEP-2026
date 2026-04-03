@@ -5,8 +5,6 @@ export const generateRoadmap = async (req, res, next) => {
   try {
     const { user_id, career_field } = req.body;
 
-    // ✅ BUG FIX 4: career_id ki jagah career_field use karo
-    // ✅ BUG FIX 5: "step_order" galat column name tha — sahi naam "step_number" hai
     if (!career_field) {
       return res.status(400).json({
         message: "Please provide career_field"
@@ -15,7 +13,7 @@ export const generateRoadmap = async (req, res, next) => {
 
     const roadmap = await RoadmapStep.findAll({
       where: { career_field },
-      order: [["step_number", "ASC"]]  // ✅ step_order → step_number (correct column name)
+      order: [["step_number", "ASC"]]  
     });
 
     if (roadmap.length === 0) {
@@ -40,11 +38,6 @@ export const getRoadmap = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
-    // ✅ BUG FIX 6: userId param use hi nahi ho raha tha — sab ka roadmap aa raha tha
-    //    Pehle: RoadmapStep.findAll()  — koi filter nahi!
-    //    Ab: user ki career choice dhundho, phir uski roadmap lo
-
-    // Pehle user ki career choice nikalo
     const careerChoice = await CareerPath.findOne({
       where: { user_id: userId }
     });

@@ -9,16 +9,27 @@ const RoadmapStep = sequelize.define("RoadmapStep", {
     primaryKey: true
   },
 
-  career_id: {
-    type: DataTypes.INTEGER
+  career_field: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
 
-  step_order: {
-    type: DataTypes.INTEGER
+  step_number: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
 
   step_title: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+
+  description: {
+    type: DataTypes.TEXT
+  },
+
+  resources: {
+    type: DataTypes.JSON
   }
 
 });

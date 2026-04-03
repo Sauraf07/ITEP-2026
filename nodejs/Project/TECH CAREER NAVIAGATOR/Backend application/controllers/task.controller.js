@@ -1,35 +1,56 @@
 import DailyTask from "../models/dailytask.model.js";
 import Progress from "../models/Progress.model.js";
 
+const DEFAULT_DAILY_TASKS = [
+  "Review fundamentals of your selected area",
+  "Complete coding challenges on LeetCode/HackerRank",
+  "Study one new concept from your curriculum",
+  "Work on a mini project related to today's learning",
+  "Read 1 article from industry blog",
+  "Practice interview questions",
+  "Debug someone else's code on GitHub",
+  "Document what you learned today",
+  "Participate in online community discussion",
+  "Review your previous day's work"
+];
+
 export const generateTasks = async (req, res, next) => {
   try {
     const { user_id, tasks } = req.body;
 
-    if (!user_id || !tasks || !Array.isArray(tasks) || tasks.length === 0) {
+    if (!user_id) {
       return res.status(400).json({
-        message: "Please provide user_id and a tasks array"
+        message: "Please provide user_id"
+      });
+    }
+    const tasksToCreate = tasks && Array.isArray(tasks) && tasks.length > 0 
+      ? tasks 
+      : DEFAULT_DAILY_TASKS;
+
+    const existingTasks = await DailyTask.findAll({
+      where: { user_id }
+    });
+
+    if (existingTasks.length > 0) {
+      return res.status(400).json({
+        message: "Tasks already created for this user"
       });
     }
 
     const createdTasks = [];
-    let day = 1;
-
-    for (let task of tasks) {
+    for (let i = 0; i < tasksToCreate.length; i++) {
       const newTask = await DailyTask.create({
         user_id,
-        task_description: task,  // ✅ BUG FIX 7: "task" galat field naam tha — model mein "task_description" hai
-        day_number: day
+        task_description: tasksToCreate[i],
+        day_number: i + 1
       });
       createdTasks.push(newTask);
-      day++;
     }
 
-    // ✅ BUG FIX 8: Progress track karo jab tasks generate hon
-    //    Pehle: Progress table bilkul use hi nahi ho raha tha
     const existingProgress = await Progress.findOne({ where: { user_id } });
 
     if (existingProgress) {
-      existingProgress.total_tasks += createdTasks.length;
+      existingProgress.total_tasks = createdTasks.length;
       await existingProgress.save();
     } else {
       await Progress.create({
@@ -54,6 +75,12 @@ export const getTasks = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
+    if (!userId) {
+      return res.status(400).json({
+        message: "Please provide userId"
+      });
+    }
+
     const tasks = await DailyTask.findAll({
       where: { user_id: userId },
       order: [["day_number", "ASC"]]
@@ -74,8 +101,12 @@ export const completeTask = async (req, res, next) => {
   try {
     const { task_id, user_id } = req.body;
 
-    // ✅ BUG FIX 9: Koi null check nahi tha
-    //    Agar task_id galat ho toh "Cannot set property of null" crash aata tha
+    if (!task_id || !user_id) {
+      return res.status(400).json({
+        message: "Please provide task_id and user_id"
+      });
+    }
+
     const task = await DailyTask.findByPk(task_id);
 
     if (!task) {
@@ -93,27 +124,24 @@ export const completeTask = async (req, res, next) => {
     task.is_completed = true;
     await task.save();
 
-    // ✅ BUG FIX 10: Progress update nahi ho raha tha task complete karne ke baad
-    //    Ab completed_tasks count +1 hoga
-    const progress = await Progress.findOne({ where: { user_id: task.user_id } });
+    const progress = await Progress.findOne({ where: { user_id } });
 
     if (progress) {
       progress.completed_tasks += 1;
       await progress.save();
     }
 
-    // Progress percentage calculate karo
     const percentage = progress
       ? Math.round((progress.completed_tasks / progress.total_tasks) * 100)
       : 0;
 
     res.json({
-      message: "Task marked as completed",
-      task_id,
+      message: "Task completed successfully",
+      task,
       progress: {
-        completed: progress?.completed_tasks || 1,
-        total: progress?.total_tasks || 1,
-        percentage: `${percentage}%`
+        completed: progress?.completed_tasks || 0,
+        total: progress?.total_tasks || 0,
+        percentage
       }
     });
 
@@ -122,31 +150,33 @@ export const completeTask = async (req, res, next) => {
   }
 };
 
-// ✅ NEW: Progress dekho — pehle ye tha hi nahi
 export const getProgress = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
-    const progress = await Progress.findOne({
-      where: { user_id: userId }
-    });
-
-    if (!progress) {
-      return res.status(404).json({
-        message: "No progress found. Generate tasks first."
+    if (!userId) {
+      return res.status(400).json({
+        message: "Please provide userId"
       });
     }
 
-    const percentage = Math.round(
-      (progress.completed_tasks / progress.total_tasks) * 100
-    );
+    const progress = await Progress.findOne({ where: { user_id: userId } });
+
+    if (!progress) {
+      return res.status(404).json({
+        message: "No progress found"
+      });
+    }
+
+    const percentage = Math.round((progress.completed_tasks / progress.total_tasks) * 100);
 
     res.json({
       message: "Progress fetched successfully",
-      user_id: userId,
-      completed_tasks: progress.completed_tasks,
-      total_tasks: progress.total_tasks,
-      percentage: `${percentage}%`
+      progress: {
+        completed_tasks: progress.completed_tasks,
+        total_tasks: progress.total_tasks,
+        percentage
+      }
     });
 
   } catch (error) {

@@ -10,15 +10,18 @@ const DailyTask = sequelize.define("DailyTask", {
   },
 
   user_id: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
 
-  task: {
-    type: DataTypes.STRING
+  task_description: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
 
   day_number: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
 
   is_completed: {
