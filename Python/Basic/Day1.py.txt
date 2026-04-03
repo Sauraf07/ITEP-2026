@@ -40,6 +40,7 @@ Limitations :-
     Perforamance wise slow,
 Will use Pycharm,
 In Python everything is in the form of object.
+=========================================================
 OOPs:-
     1)Class and Object,
     2)Encaplustaion : Data Binding + Security
@@ -60,8 +61,61 @@ can access the data outside the class;
 
 ==========================================
 Program Execution:-
+Source code[.py] 
   1)Parsing:-
-    a)lexical analysics
+    a)lexical analysics [tokenization]
     b)syntex analysis [AST]
     c)Complier -> Byte code -> Python virtual machine -> Output
-    
+  2)----AST----- Compilation
+  3)---byte code----
+  4) PVM[python virtual machine]
+======================================================================
+In Python there is a by default module (built-in);
+Every class has a parent class is a object.
+Object Class provide 3 method:-
+ Magic method : a) ___init___ ,b)___str___.
+
+========================================================================
+Abstract Sequence:-
+    /n,
+    /t,
+    /b,
+    /r,
+    /l,
+Comments:-
+Python only supports-
+ # Single Line Comment 
+
+String:-
+'' # single line String
+"" # Double line String
+''' ''' # triple line String
+
+Termination:-
+    No semicolon is used ; no
+
+Block :-                |
+    if(a>b){            | if(a>b):
+                        |   --->
+        ----            |  ---->
+        ----
+        ----
+    }
+
+Identifiers:-
+ Name of Anything
+ a-z, A-Z, 0-9,_
+ a1 = 10 valid
+ 1a = 10 not valid
+
+There is no length limitations on name
+
+Case Sesentitive
+
+TO concinate two others variable we use (,)
+
+Error:-
+    Indentation,
+    Type,
+    Name
+
