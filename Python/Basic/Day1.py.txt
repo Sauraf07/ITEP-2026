@@ -1,0 +1,67 @@
+# Introduction
+It Is High level programming language develop by Guido Van Rossan
+in 1991. 0.9.0
+Python 2 -- 2000
+Python 3 -- 2008
+will use Cpython
+Pyhon is a Function Orianted, OOP, Multi Pagardigm scritpting language
+Syntex:- C
+OOPS :- C++
+Scripting:- Shell
+Module:- Modula-3
+Pyhon is Pure OOPs ,
+everything is fully object orianted programming.
+Dynamically Typed language.
+a = 5
+Platform independent
+Python is also a compile language.
+compile behind the seen.
+which generates the bite code with extention .pyc;
+    PVM :- Python virtual machine;
+will exesute the code line by line.
+This is the interpreter.
+write once run anywhere. Platform Independency.
+use space or Indentation.
+Open - Source :-
+no need to purches the licence,
+source is open to all,
+Large Standerd Libraryies,
+Simple .
+Ai application, 
+Desktop application,
+Data science,
+ML,
+Data Anliystics Application using the libararay,
+Automotion,
+Web Scraping ,
+Cyber Security,
+Moblie Application,
+Limitations :-
+    Perforamance wise slow,
+Will use Pycharm,
+In Python everything is in the form of object.
+OOPs:-
+    1)Class and Object,
+    2)Encaplustaion : Data Binding + Security
+    Private, Public and Protected
+    (__),  noUnderscore   (_)
+python use notation,
+Python use name maglin Concet;
+can access the data outside the class;
+3)Abstraction :-
+    Abstract Class:- [abc]
+4) Inheritacnce:-
+    a) Single level
+    b) Multi level
+    c) multiple level
+    d) Hirecichal level
+5)Polymorphism:-
+    a)with diffrerent technics 
+
+==========================================
+Program Execution:-
+  1)Parsing:-
+    a)lexical analysics
+    b)syntex analysis [AST]
+    c)Complier -> Byte code -> Python virtual machine -> Output
+    
