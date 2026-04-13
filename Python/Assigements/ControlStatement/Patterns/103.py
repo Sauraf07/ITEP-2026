@@ -1,5 +1,5 @@
 n = 5
 for i in range(1, n+1):
     for j in range(1, i+1):
-        print(j if (j==1 or j==i or i==n) else " ", end="")
+        print((i+j)%2, end=" ")
     print()

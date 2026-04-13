@@ -1,4 +1,6 @@
-current = 1
-for i in range(1, 5):
-    print(''.join([str(current + j) for j in range(i)]))
-    current += i
+num = 1
+for i in range(1,5):
+    for j in range(i):
+        print(num, end="")
+        num += 1
+    print()

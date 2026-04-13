@@ -1,4 +1,5 @@
-print(1)
-print(10)
-for i in range(2, 5):
-    print("1" + " " * (i - 1) + str(i % 2))
+n = 5
+for i in range(n, 0, -1):
+    for j in range(1, i+1):
+        print(j, end="")
+    print()

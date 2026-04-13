@@ -1,2 +1,3 @@
-for i in range(1,6):
-     print("10" * (i // 2) + "1" * (i % 2)) 
+n = 5
+for i in range(1, n+1):
+     print(str(i) * (2*i - 1))
