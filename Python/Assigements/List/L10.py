@@ -1,7 +1,23 @@
-li = [1,2,3,4,5]
-start = li[0]
-end = li[-1]
-mid = start//end
-num = int(input("Enter the number to search "))
-if num>num[mid]:
-    print
+def binarySearch():
+    num = [1, 2, 3, 4, 5, 6, 7]
+    print(num)
+
+    n = int(input("Enter a number : "))
+
+    start = 0
+    end = len(num) - 1
+
+    while start <= end:
+        mid = (start + end) // 2
+
+        if num[mid] == n:
+            print(f"Found element at index {mid}")
+            return
+        elif n > num[mid]:
+            start = mid + 1
+        else:
+            end = mid - 1
+
+    print("Element not found")
+
+binarySearch()
