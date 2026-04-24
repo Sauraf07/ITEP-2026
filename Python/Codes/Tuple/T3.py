@@ -7,6 +7,7 @@ print(y)
 print(y[1:2])
 print(x[-2:-6:-1])
 print(len(x))
+print(len(y))
 
 '''
 Tuple:

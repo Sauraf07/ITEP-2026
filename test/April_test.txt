@@ -1,0 +1,99 @@
+Dummy json data.
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Engineering",
+      "employees": [
+        { "id": 1, "name": "Alice", "role": "Frontend Developer" },
+        { "id": 2, "name": "Bob", "role": "Backend Developer" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "HR",
+      "employees": [
+        { "id": 1, "name": "Charlie", "role": "Recruiter" },
+        { "id": 2, "name": "Diana", "role": "HR Manager" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Finance",
+      "employees": [
+        { "id": 1, "name": "Ethan", "role": "Accountant" },
+        { "id": 2, "name": "Fiona", "role": "Financial Analyst" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Marketing",
+      "employees": [
+        { "id": 1, "name": "George", "role": "SEO Specialist" },
+        { "id": 2, "name": "Hannah", "role": "Content Writer" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sales",
+      "employees": [
+        { "id": 1, "name": "Ian", "role": "Sales Executive" },
+        { "id": 2, "name": "Jane", "role": "Sales Manager" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Support",
+      "employees": [
+        { "id": 1, "name": "Kevin", "role": "Support Engineer" },
+        { "id": 2, "name": "Laura", "role": "Customer Support" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Operations",
+      "employees": [
+        { "id": 1, "name": "Mike", "role": "Operations Manager" },
+        { "id": 2, "name": "Nina", "role": "Coordinator" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Design",
+      "employees": [
+        { "id": 1, "name": "Oliver", "role": "UI Designer" },
+        { "id": 2, "name": "Pooja", "role": "UX Designer" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Legal",
+      "employees": [
+        { "id": 1, "name": "Quinn", "role": "Legal Advisor" },
+        { "id": 2, "name": "Riya", "role": "Compliance Officer" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Admin",
+      "employees": [
+        { "id": 1, "name": "Sam", "role": "Administrator" },
+        { "id": 2, "name": "Tina", "role": "Office Assistant" }
+      ]
+    }
+  ]
+}
+Requirements
+🔹 1. Display Data
+Show all departments.
+Display department(id, department name, button for view employee) in card
+Under each department, list employees in different component.
+🔹 2. Create
+Add a new department
+Add a new employee inside a department
+🔹 3. Update
+Edit department name
+Edit employee name & role
+🔹 4. Delete
+Delete department
+Delete employee from a department
