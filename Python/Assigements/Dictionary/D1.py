@@ -1,10 +1,10 @@
-data = {"a": 1, "b": 2, "c": 1, "d": 3}
-result = []
-for i in data.items():
-    print(i)
-    for j in range(len(data)):  
-        if data.get(i) == data.get(j):
-            result.append(data.get())
-
-      
-print(result)
+data={"a":1,"b":2,"c":1,"d":3}
+result={}
+for key,value in data.items():
+    if value in result:
+        result[value]=result[value]+[key]
+    else:
+        result[value]=[key]
+for value,keys in result.items():
+    if len(keys)>1:
+        print(keys)
