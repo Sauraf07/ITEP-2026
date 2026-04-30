@@ -8,6 +8,6 @@ def palindrome():
     else:
         print("Not Palindrome")
 
-# palindrome()
+palindrome()
 
 
