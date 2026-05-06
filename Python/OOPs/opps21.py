@@ -21,9 +21,11 @@ class Time:
         return temp
 t1 = Time(2,45,50)
 t2 = Time(3,20,30)
+t3 = Time(1,30,40)
 t1.display()
 t2.display()
-t3 = t1 + t2
+t3.display()
+t3 = t1 + t2 + t3
 t3.display()
 
         
