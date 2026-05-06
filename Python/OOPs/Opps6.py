@@ -1,9 +1,40 @@
-class Time:
-    def __init__(self,hr,mn,sc):
-        self.__hr = hr
-        self.__mn = mn
-        self.__sc = sc
+'''
+ Methods:-
+   instance
+   static
+   class Methods
+Variables :-
+  instance
+  static varaible/class variable
+  local
+  global   
+'''
+class TestObjectCount:
+    __counter = 0
+    def __init__(self):
+        TestObjectCount.__counter += 1
+    
+    @classmethod
+    def get_total_count(cls):
+        return TestObjectCount.__counter    
 
-    def __add__(self, other):
-        
-        
+obj = TestObjectCount()
+obj2 = TestObjectCount()
+obj3 = TestObjectCount()
+
+print(f"Total Object : {TestObjectCount.get_total_count()}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
