@@ -1,2 +1,2 @@
 ITEP:
-TECHINICAL WORKS
+Technical works
