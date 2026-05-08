@@ -50,7 +50,7 @@ class Product:
         print(f"Product ID: {self.__product_id}")
         print(f"Name: {self.__name}")
         print(f"Quantity: {self.__quantity}")
-        print(f"Price: ${self.__price}")
+        print(f"Price: {self.__price}")
 
 product1 = Product(101, "Laptop", 50, 1000)
 product1.Details()  
