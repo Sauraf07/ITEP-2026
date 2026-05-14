@@ -21,49 +21,44 @@ Abstract class
 Method overriding
 Business logic
 '''
-from abc import *
+from abc import ABC, abstractmethod
+
 class Employee(ABC):
-    def __init__(self,name,salary):
+    def __init__(self, name, salary):
         self.__name = name
         self.__salary = salary
 
     @abstractmethod
-    def calculate_bonous(self):
+    def calculate_bonus(self):
         pass
-    @abstractmethod
+
     def display_details(self):
-        print(f"Name : {self.__name}")
-        print(f"Salary : {self.__salary}")
-        print(f"bonous : {self.calculate_bonous()}")
+        print("Name :", self.__name)
+        print("Salary :", self.__salary)
+        print("Bonus :", self.calculate_bonus())
 
-    def get_name(self):
-        return self.__name
-
-    def  get_salary(self):
-        return self.__name
-
+    def get_salary(self):
+        return self.__salary
 
 class Developer(Employee):
-    salary = 5000
-    def __init__(self, name, salary):
-        super().__init__(name, salary)
-
-    def calculate_bonous(self,bonous):
-        self.__bonous = bonous
-        self.salary = self.salary + ((self.salary*self.__bonous)/100)
-
-    def display_details(self):
-        return super().display_details()   
-        
-    def get_bonous(self):
-        return self.__bonous
+    def calculate_bonus(self):
+        return self.get_salary() * 0.20
 
 class Manager(Employee):
-    pass
+    def calculate_bonus(self):
+        return self.get_salary() * 0.35
 
 class Intern(Employee):
-    pass
 
-d1 = Developer("Saurav",5000)
+    def calculate_bonus(self):
+        return 5000
+
+d1 = Developer("Saurav", 50000)
+m1 = Manager("Rohit", 80000)
+i1 = Intern("Ankit", 20000)
+
 d1.display_details()
-d1.calculate_bonous(20)
+print("="*20)
+m1.display_details()
+print("="*20)
+i1.display_details()
