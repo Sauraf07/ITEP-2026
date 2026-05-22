@@ -10,3 +10,9 @@ class Task:
                 print(f"{current_thread().name} Executing  ")
                 time.sleep(1)
 
+task = Task()
+t1 = Thread(target=task.transection)
+t2 = Thread(target=task.transection)
+
+t1.start()
+t2.start()
