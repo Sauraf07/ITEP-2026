@@ -1,5 +1,7 @@
-from services.auth_service import register, login
-from course import create_course, view_courses, enroll_course
+from src.services.auth_services import AuthService
+from src.menus.admin_menu import show_admin_menu
+from src.menus.instructor_menu import show_instructor_menu
+from src.menus.student_menu import show_student_menu
 
 
 while True:
@@ -9,65 +11,34 @@ while True:
     print("2. Login")
     print("3. Exit")
 
-    choice = input("Enter Choice: ")
+    choice = input("Enter Choice : ")
 
     if choice == "1":
-        register()
+
+        AuthService.register()
 
     elif choice == "2":
 
-        user = login()
+        user = AuthService.login()
 
-        if user:
-
-            user_id = user[0]
-            role = user[4]
-
-            print("Login Successful!")
-
-            if role == "instructor":
-
-                while True:
-
-                    print("\nInstructor Menu")
-                    print("1. Create Course")
-                    print("2. View Courses")
-                    print("3. Logout")
-
-                    ch = input("Choice: ")
-
-                    if ch == "1":
-                        create_course(user_id)
-
-                    elif ch == "2":
-                        view_courses()
-
-                    elif ch == "3":
-                        break
-
-            elif role == "student":
-
-                while True:
-
-                    print("\nStudent Menu")
-                    print("1. View Courses")
-                    print("2. Enroll Course")
-                    print("3. Logout")
-
-                    ch = input("Choice: ")
-
-                    if ch == "1":
-                        view_courses()
-
-                    elif ch == "2":
-                        enroll_course(user_id)
-
-                    elif ch == "3":
-                        break
-
-        else:
+        if not user:
             print("Invalid Credentials")
+            continue
+
+        role = user["role"]
+
+        if role == "admin":
+            show_admin_menu(user)
+
+        elif role == "instructor":
+            show_instructor_menu(user)
+
+        elif role == "student":
+            show_student_menu(user)
 
     elif choice == "3":
-        print("Goodbye!")
+        print("Thank You For Using LearnTrack LMS")
         break
+
+    else:
+        print("Invalid Choice")

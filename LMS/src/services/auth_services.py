@@ -1,137 +1,90 @@
-from mysql.connector import Error
-from db_config.database import pool
 import bcrypt
+
+from src.models.user import User
+from src.dao.user_dao import UserDAO
 
 
 class AuthService:
 
     @staticmethod
-    def register(name, email, password, role):
-        try:
-            with pool.get_connection() as conn:
-                with conn.cursor() as cursor:
+    def register():
 
-                    hashed_password = bcrypt.hashpw(
-                        password.encode(),
-                        bcrypt.gensalt()
-                    ).decode()
+        full_name = input("Name : ").strip()
 
-                    sql = """
-                    INSERT INTO users(name,email,password,role)
-                    VALUES(%s,%s,%s,%s)
-                    """
+        while True:
+            email = input("Email : ").strip()
 
-                    cursor.execute(
-                        sql,
-                        (name, email, hashed_password, role)
-                    )
+            if "@" in email and "." in email:
+                break
 
-                    conn.commit()
-                    return True
+            print("Invalid email format!")
 
-        except Error as e:
-            print(e)
+        while True:
+            password = input("Password : ")
 
-            if conn and conn.is_connected():
-                conn.rollback()
+            if len(password) >= 6:
+                break
 
-            return False
+            print("Password must be at least 6 characters.")
+
+        while True:
+            role = input(
+                "Role(student/instructor/admin) : "
+            ).lower().strip()
+
+            if role in [
+                "student",
+                "instructor",
+                "admin"
+            ]:
+                break
+
+            print(
+                "Invalid role! "
+                "Enter student, instructor or admin."
+            )
+
+        existing_user = UserDAO.get_by_email(email)
+
+        if existing_user:
+            print("Email already registered!")
+            return
+
+        password_hash = bcrypt.hashpw(
+            password.encode(),
+            bcrypt.gensalt()
+        ).decode()
+
+        user = User(
+            full_name=full_name,
+            email=email,
+            password_hash=password_hash,
+            role=role
+        )
+
+        if UserDAO.save(user):
+            print("Registration Successful")
+        else:
+            print("Registration Failed")
 
     @staticmethod
-    def login(email, password):
-        try:
-            with pool.get_connection() as conn:
-                with conn.cursor(dictionary=True) as cursor:
+    def login():
 
-                    sql = """
-                    SELECT * FROM users
-                    WHERE email = %s
-                    """
+        email = input("Email : ")
+        password = input("Password : ")
 
-                    cursor.execute(sql, (email,))
+        user = UserDAO.get_by_email(email)
 
-                    user = cursor.fetchone()
-
-                    if user:
-
-                        if bcrypt.checkpw(
-                            password.encode(),
-                            user["password"].encode()
-                        ):
-                            return user
-
-                    return None
-
-        except Error as e:
-            print(e)
+        if not user:
+            print("User Not Found")
             return None
 
-    @staticmethod
-    def fetch_all_users():
-        try:
-            with pool.get_connection() as conn:
-                with conn.cursor() as cursor:
+        if bcrypt.checkpw(
+            password.encode(),
+            user["password_hash"].encode()
+        ):
+            print("Login Successful")
+            return user
 
-                    sql = """
-                    SELECT user_id,name,email,role
-                    FROM users
-                    """
-
-                    cursor.execute(sql)
-
-                    rows = cursor.fetchall()
-
-                    for row in rows:
-                        user_id, name, email, role = row
-
-                        print(
-                            f"{user_id} : {name} : {email} : {role}"
-                        )
-
-        except Error as e:
-            print(e)
-
-    @staticmethod
-    def delete_user(user_id):
-        try:
-            with pool.get_connection() as conn:
-                with conn.cursor() as cursor:
-
-                    sql = """
-                    DELETE FROM users
-                    WHERE user_id = %s
-                    """
-
-                    cursor.execute(sql, (user_id,))
-
-                    conn.commit()
-
-                    return cursor.rowcount > 0
-
-        except Error as e:
-
-            if conn and conn.is_connected():
-                conn.rollback()
-
-            print(e)
-            return False
-
-    @staticmethod
-    def find_by_email(email):
-        try:
-            with pool.get_connection() as conn:
-                with conn.cursor(dictionary=True) as cursor:
-
-                    sql = """
-                    SELECT *
-                    FROM users
-                    WHERE email = %s
-                    """
-
-                    cursor.execute(sql, (email,))
-
-                    return cursor.fetchone()
-
-        except Error as e:
-            print(e)
-            return None
+        print("Invalid Password")
+        return None
