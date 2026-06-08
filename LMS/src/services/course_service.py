@@ -35,10 +35,10 @@ class CourseService:
         for course in courses:
 
             print(f"""
-Course ID : {course['course_id']}
-Title     : {course['title']}
-Instructor: {course['full_name']}
-Description:
-{course['description']}
-------------------------------------
-""")
+                        Course ID : {course['course_id']}
+                        Title     : {course['title']}
+                        Instructor: {course['full_name']}
+                        Description:
+                        {course['description']}
+                        ------------------------------------
+                        """)
