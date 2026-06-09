@@ -11,3 +11,4 @@ class Employee(Base):
     department: Mapped[str] = mapped_column(String(100), nullable=False)
     skill: Mapped[str] = mapped_column(String(100), nullable=False)
     gender: Mapped[str] = mapped_column(String(7))
+    age: Mapped[int] = mapped_column(Integer)

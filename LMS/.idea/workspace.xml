@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5943bb1f-854c-4307-94f9-15d4fd178628" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/certificate_dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/certificate_dao.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/course_dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/course_dao.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SqlAlchemy/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SqlAlchemy/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SqlAlchemy/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SqlAlchemy/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SQLAlembic/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SQLAlembic/alembic/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SQLAlembic/src/model/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SQLAlembic/src/model/employee.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,7 @@
       <workItem from="1780891793896" duration="1715000" />
       <workItem from="1780902716223" duration="7092000" />
       <workItem from="1780980075277" duration="1173000" />
-      <workItem from="1780997214352" duration="2865000" />
+      <workItem from="1780997214352" duration="3463000" />
     </task>
     <servers />
   </component>
