@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5943bb1f-854c-4307-94f9-15d4fd178628" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/course_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/course_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/certificate_dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/certificate_dao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/course_dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/course_dao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SqlAlchemy/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SqlAlchemy/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SqlAlchemy/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SqlAlchemy/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,31 +94,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.database.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.report_dao.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/SAURAF KUMAR/Desktop/ITEP-17/LMS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.database.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.report_dao.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SAURAF KUMAR/Desktop/ITEP-17/LMS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\SAURAF KUMAR\Desktop\ITEP-17\LMS\src\services" />
@@ -139,7 +142,9 @@
       <workItem from="1780650918028" duration="5768000" />
       <workItem from="1780842536419" duration="8773000" />
       <workItem from="1780891793896" duration="1715000" />
-      <workItem from="1780902716223" duration="5722000" />
+      <workItem from="1780902716223" duration="7092000" />
+      <workItem from="1780980075277" duration="1173000" />
+      <workItem from="1780997214352" duration="2865000" />
     </task>
     <servers />
   </component>

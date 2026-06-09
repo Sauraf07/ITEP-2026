@@ -39,15 +39,7 @@ class CourseDAO:
             with pool.get_connection() as conn:
                 with conn.cursor(dictionary=True) as cursor:
 
-                    sql = """
-                    SELECT
-                        c.course_id,
-                        c.title,
-                        c.description,
-                        u.full_name
-                    FROM courses c
-                    JOIN users u
-                    ON c.instructor_id = u.user_id
+                    sql = """SELECT c.course_id,c.title,c.description,u.full_name FROM courses c JOIN users u ON c.instructor_id = u.user_id
                     """
 
                     cursor.execute(sql)

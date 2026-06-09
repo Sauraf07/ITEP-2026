@@ -14,15 +14,7 @@ class CertificateDAO:
             with pool.get_connection() as conn:
                 with conn.cursor() as cursor:
 
-                    sql = """
-                    INSERT INTO certificates
-                    (
-                        student_id,
-                        course_id,
-                        certificate_path
-                    )
-                    VALUES (%s,%s,%s)
-                    """
+                    sql = "INSERT INTO certificates(student_id,course_id,certificate_path )VALUES (%s,%s,%s) "
 
                     cursor.execute(
                         sql,
