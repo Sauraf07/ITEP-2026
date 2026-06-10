@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5943bb1f-854c-4307-94f9-15d4fd178628" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SQLAlembic/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SQLAlembic/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SQLAlembic/src/model/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SQLAlembic/src/model/employee.py" afterDir="false" />
-    </list>
+    <list default="true" id="5943bb1f-854c-4307-94f9-15d4fd178628" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,6 +139,7 @@
       <workItem from="1780902716223" duration="7092000" />
       <workItem from="1780980075277" duration="1173000" />
       <workItem from="1780997214352" duration="3463000" />
+      <workItem from="1781064674548" duration="28000" />
     </task>
     <servers />
   </component>
