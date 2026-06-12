@@ -9,3 +9,4 @@ class Department(Base):
     office_location:Mapped[str] = mapped_column(String)
     phone_number:Mapped[str] = mapped_column(String)
     email:Mapped[str] = mapped_column(String)
+    
