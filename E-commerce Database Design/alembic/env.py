@@ -5,6 +5,14 @@ from sqlalchemy import pool
 
 from alembic import context
 from src.model.user import User
+from src.model.addresses import Address
+from src.model.orders import Order
+from src.model.categories import Category
+from src.model.products import Product
+from src.model.order_items import Order_Items
+from src.model.payments import Payment
+from src.model.shipments import Shipment
+from src.model.reviews import Review
 from src.db.db_config import Base
 from src.model.user import User
 # this is the Alembic Config object, which provides
