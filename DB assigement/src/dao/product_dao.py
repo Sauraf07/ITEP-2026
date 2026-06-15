@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import SQLAlchemyError
 
 from src.model.product import Product
@@ -96,4 +96,126 @@ class ProductDao:
         except SQLAlchemyError as e:
             print(e)
             
+    @staticmethod
+    def find_by_category(category):
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).where(Product.catagory_name == category)
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def fetch_product_greater_than_price(price):
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).where(Product.price > 70000)
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def get_products_by_percent_discount(discount_percent):
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).where(Product.discount_percent > discount_percent)
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def and_condition_example(price, discount_percent):
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).where(Product.price > price, Product.discount_percent > discount_percent)
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def or_condition_example(price, discount_percent):
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).where((Product.price > price) | (Product.discount_percent > discount_percent))
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def order_by_price_asc():
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).order_by(Product.price.asc())
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title} - {product.price}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def order_by_price_desc():
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).order_by(Product.price.desc())
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title} - {product.price}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def count_products_by_brand():
+        try:
+            with SessionLocal() as session:
+                statement = select(Product.brand, func.count(Product.id)).group_by(Product.brand)
+                results = session.execute(statement).all()
+                for brand, count in results:
+                    print(f"Brand: {brand}, Count: {count}")
+        except SQLAlchemyError as e:
+            print(e)
+
+    @staticmethod
+    def avg_price_by_category():
+        try:
+            with SessionLocal() as session:
+                statement = select(Product.catagory_name, func.avg(Product.price)).group_by(Product.catagory_name)
+                results = session.execute(statement).all()
+                for category, avg_price in results:
+                    print(f"Category: {category}, Average Price: {avg_price}")
+        except SQLAlchemyError as e:
+            print(e)
+        
+    @staticmethod
+    def find_all_laptops():
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).where(Product.catagory_name == 'Laptop')
+                products = session.execute(statement).scalars().all()
+                for product in products:
+                    print(f"{product.id} : {product.title}")
+        except SQLAlchemyError as e:
+            print(e)
+    
+    @staticmethod
+    def most_expensive_product():
+        try:
+            with SessionLocal() as session:
+                statement = select(Product).order_by(Product.price.desc()).limit(1)
+                product = session.execute(statement).scalar_one_or_none()
+                if product:
+                    print(f"Most Expensive Product: {product.id} : {product.title} - {product.price}")
+                else:
+                    print("No products found.")
+        except SQLAlchemyError as e:
+            print(e)
         
