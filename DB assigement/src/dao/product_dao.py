@@ -133,7 +133,7 @@ class ProductDao:
     def and_condition_example(price, discount_percent):
         try:
             with SessionLocal() as session:
-                statement = select(Product).where(Product.price > price, Product.discount_percent > discount_percent)
+                statement = select(Product).where(Product.price > price and Product.discount_percent > discount_percent)
                 products = session.execute(statement).scalars().all()
                 for product in products:
                     print(f"{product.id} : {product.title}")
@@ -144,7 +144,7 @@ class ProductDao:
     def or_condition_example(price, discount_percent):
         try:
             with SessionLocal() as session:
-                statement = select(Product).where((Product.price > price) | (Product.discount_percent > discount_percent))
+                statement = select(Product).where((Product.price > price) or (Product.discount_percent > discount_percent))
                 products = session.execute(statement).scalars().all()
                 for product in products:
                     print(f"{product.id} : {product.title}")
