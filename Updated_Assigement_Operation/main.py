@@ -1,16 +1,21 @@
-# This is a sample Python script.
+from sqlalchemy.exc import SQLAlchemyError
 
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+from src.db.db_config import SessionLocal
+from src.model import Product
+from src.service import product_service
+from src.service.product_service import ProductService
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+def create_product():
+    try:
+        with SessionLocal.begin() as session:
+            title = input("Enter product title: ")
+            price = float(input("Enter product price: "))
+            brand = input("Enter product brand: ")
+            category = input("Enter product category: ")
+            dp = float(input("Enter product discount Percentage: "))
+            p = Product(title=title,price=price,brand=brand,category_name=category,discount_percentage=dp)
+            product_service = ProductService(session)
+            
+    except SQLAlchemyError as e:
+        print(e)
