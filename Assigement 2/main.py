@@ -2,7 +2,7 @@ from src.menus.author_menu import AuthorMenu
 from src.menus.book_menu import BookMenu
 
 while True:
-    print("Press 1 To Create an Author")
+    print("Press 1 for Author Works")
     print("Press 2 For Books")
     print("Press 0 To Exit")
 

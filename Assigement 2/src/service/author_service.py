@@ -7,3 +7,6 @@ class AuthorService:
 
     def create_author(self,a:Author):
         return self.Author_dao.create_author(a)
+
+    def list_author(self):
+        return self.Author_dao.author_list()
