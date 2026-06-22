@@ -3,7 +3,8 @@ import asyncio
 from sqlalchemy.exc import SQLAlchemyError
 
 from src.db.db_config import SessionLocal
-from src.model import Author, author
+from src.model import author
+from src.model.author import Author
 from src.services.author_service import AuthorService
 
 async def update_author():
@@ -12,11 +13,12 @@ async def update_author():
         name = input("Enter your name: ")
         email = input("Enter your email: ")
         async with SessionLocal.begin() as session:
-            author = Author(id=id,name=name, email=email)
+            # author = Author(id=id,name=name, email=email)
             author_service = AuthorService(session)
-            author = await author_service.update_author(id, name, email)
-            await session.refresh(author)
-            print(f"Author updated successfully {author.id} : {author.name}")
+            author_update = await author_service.update_author(id, name, email)
+            await session.refresh(author_update)
+            # print(f"Author_id :  {author.id} Name : {author.name}")
+            print(f"Author updated successfully {author_update.id} : {author_update.name}")
 
 
     except SQLAlchemyError as e:

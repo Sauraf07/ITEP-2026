@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 
-from src.model import Author
+from src.model.author import Author
 from src.repo.author_repo import AuthorRepo
 
 

@@ -1,7 +1,7 @@
 from sqlalchemy import select
 
 from src.ResourceNotFoundExcaption.resourcenotfound import ResourceNotFoundExcaption
-from src.model import Author
+from src.model.author import Author
 
 
 class AuthorRepo:
