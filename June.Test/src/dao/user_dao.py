@@ -31,4 +31,4 @@ class UserDao:
     async def delete_user(self,user:User):
         await self.session.delete(user)
         await self.session.commit()
-        return user
+        return None

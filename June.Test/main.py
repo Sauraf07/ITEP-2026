@@ -45,6 +45,9 @@ async def fetch_by_id():
             else:
                 for user in user:
                     print(f"ID: {user.id}, Name: {user.name}, Email: {user.email}")
+
+    except ResourcenotFound as e:
+        print(e)
     except SQLAlchemyError as e:
         print(e)
 
@@ -64,6 +67,8 @@ async def update_user_by_id():
                     user.password = input("Enter new password: ")
                     await session.commit()
                     print("User updated successfully.")
+    except ResourcenotFound as e:
+        print(e)
     except SQLAlchemyError as e:
         print(e)
    
@@ -80,6 +85,9 @@ async def delete_user():
                 await session.delete(user)
                 await session.commit()
                 print("User deleted successfully.")
+
+    except ResourcenotFound as e:
+        print(e)
     except SQLAlchemyError as e:
         print(e)
     
@@ -104,6 +112,7 @@ async def fetch_all_post():
             posts = await post_service.get_all_posts()
             for post in posts:
                 print(f"ID: {post.id}, Title: {post.title}, Content: {post.content}, User ID: {post.user_id}")
+
     except SQLAlchemyError as e:
         print(e)
         
@@ -118,7 +127,8 @@ async def fetch_post_by_id():
             else:
                 for post in post:
                     print(f"ID: {post.id}, Title: {post.title}, Content: {post.content}, User ID: {post.user_id}")
-
+    except ResourcenotFound as e:
+        print(e)
     except SQLAlchemyError as e:
         print(e)
 
@@ -136,6 +146,8 @@ async def update_post_by_id():
                     post.content = input("Enter new content: ")
                     await session.commit()
                     print("Post updated successfully.")
+    except ResourcenotFound as e:
+        print(e)
     except SQLAlchemyError as e:
         print(e)
    
@@ -151,6 +163,8 @@ async def delete_post_by_id():
                 await session.delete(post)
                 await session.commit()
                 print("Post deleted successfully.")
+    except ResourcenotFound as e:
+        print(e)
     except SQLAlchemyError as e:
         print(e)
 
