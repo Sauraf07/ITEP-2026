@@ -8,7 +8,6 @@ async def welcome():
 @app.get("/home")
 async def home():
     return {"message": "It is home page"}
-
 @app.get("/about")
 async def about():
     return {"message":"It is about page"}
