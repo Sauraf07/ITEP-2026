@@ -1,5 +1,4 @@
 import asyncio
-
 from src.services.reading_book_services import ReadingBookServices
 from src.model.book import Book
 from sqlalchemy.exc import SQLAlchemyError
@@ -157,6 +156,40 @@ async def view_reading_section_by_book_id():
         print(e)
     except Exception as e:
         print(e)
+async def update_reading_section_by_id():
+    try:
+        section_id = int(input("Enter reading section ID to update: "))
+        async with SessionLocal.begin() as session:
+            reading_service = ReadingBookServices(session)
+            reading_section = await reading_service.view_reading_section_by_id(section_id)
+            if reading_section:
+                pages_read = int(input(f"Enter new pages read (current: {reading_section.pages_read}): "))
+                reading_section.pages_read = pages_read
+                await session.commit()
+                print(f"Reading section with ID {reading_section.id} updated successfully.")
+            else:
+                raise ResourceNotFound("Reading section not found.")
+    except ResourceNotFound as e:
+        print(e)
+    except SQLAlchemyError as e:
+        print(e)
+
+async def delete_reading_section_by_id():
+    try:
+        section_id = int(input("Enter reading section ID to delete: "))
+        async with SessionLocal.begin() as session:
+            reading_service = ReadingBookServices(session)
+            reading_section = await reading_service.view_reading_sections_by_book_id(section_id)
+            if reading_section:
+                await session.delete(reading_section)
+                await session.commit()
+                print(f"Reading section with ID {reading_section.id} deleted successfully.")
+            else:
+                raise ResourceNotFound("Reading section not found.")
+    except ResourceNotFound as e:
+        print(e)
+    except SQLAlchemyError as e:
+        print(e)
 
 async def main():
     while True:
@@ -167,6 +200,8 @@ async def main():
         print("5 to delete book by ID")
         print("6 to add reading section")
         print("7 to view reading section by book ID")
+        print("8 to update reading section by ID")
+        print("9 to delete reading section by ID")
         print("0 to exit")
 
         choice = int(input("Enter your choice: "))
@@ -184,6 +219,10 @@ async def main():
             await add_reading_section()
         elif choice == 7:
             await view_reading_section_by_book_id()
+        elif choice == 8:
+            await update_reading_section_by_id()
+        elif choice == 9:
+            await delete_reading_section_by_id()
         elif choice == 0:
             break
 
