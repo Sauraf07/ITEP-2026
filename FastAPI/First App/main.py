@@ -8,6 +8,7 @@ async def welcome():
 @app.get("/home")
 async def home():
     return {"message": "It is home page"}
+
 @app.get("/about")
 async def about():
     return {"message":"It is about page"}
@@ -32,3 +33,7 @@ async def create_product(title: str=Body(...), price: float=Body(...),brand: str
 #     return {"message":"Product created successfully","product":data}
 
 
+@app.get("/product/{product_id}")
+async def get_product_by_id(product_id:int):
+    product = filter(lambda product: product.id == id,product_list)
+    return product
