@@ -33,7 +33,15 @@ async def create_product(title: str=Body(...), price: float=Body(...),brand: str
 #     return {"message":"Product created successfully","product":data}
 
 
-@app.get("/product/{product_id}")
-async def get_product_by_id(product_id:int):
-    product = filter(lambda product: product.id == id,product_list)
-    return product
+# @app.get("/product/{product_id}")
+# async def get_product_by_id(product_id: int):
+#
+#     product = next(
+#         (
+#             product
+#             for product in product_list
+#             if product.id == product_id
+#         ),
+#         None
+#     )
+#     return product
