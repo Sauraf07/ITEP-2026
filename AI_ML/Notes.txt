@@ -1,0 +1,56 @@
+----------------
+AI/ML
+----------------
+1.Regex
+2.One encoding and decoding
+3.Samplening
+4.Standard Scaler
+5.Difference btw Fit method, fit transform and immutability
+
+--------------
+Deploy
+--------------
+1.how to deploy
+2.Versal, Netify, Rendar
+3.supabase.com (databases deployment and sql practice)
+4.Git, GitHub
+5.Make a proper project using requirements and everything.
+
+------------------------------
+Logistic Regression
+------------------------------
+load
+EDA:
+a) analysis
+b)cleaning
+c)data engeringing
+  d) features scaleing
+  
+3. Feature Scaling                  (reaserch and deployment)
+4. model to save in file ---> integrate in fast api ----> take info from user ----> in return preduction.
+5.Predict--
+ 	   |----Accuracy
+	   |----Preusion
+	   |----recall
+	   |----FI Score
+	   |----Consfusion matrix
+
+6.
+(What is the difference between loss function and cost function)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
