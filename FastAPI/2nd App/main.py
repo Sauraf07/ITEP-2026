@@ -64,7 +64,7 @@ async def delete_todo(request:Request,id:int):
    async with SessionLocal.begin() as session:
       todo_service = ToDoService(session)
       todo = await todo_service.delete_todo(id)
-      return RedirectResponse("/to-do-list?message=To do deleted successfully..",status_code=303.)
+      return RedirectResponse("/to-do-list?message=To do deleted successfully..",status_code=303)
 
 
 @app.get("/update-to-do/{id}")
