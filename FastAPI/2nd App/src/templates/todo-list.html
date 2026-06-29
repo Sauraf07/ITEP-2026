@@ -25,7 +25,7 @@
                  <td>{{todo.description}}</td>
                  <td>{{todo.priority}}</td>
                  <td>
-                    <a href="/delete-to-do/{{todo.id}}">
+                    <a onclick="return confirm('Do you Want to delete it ?')" href="/delete-to-do/{{todo.id}}">
                      <button class="btn btn-outline-danger">Delete</button>
                     </a>
                  </td>

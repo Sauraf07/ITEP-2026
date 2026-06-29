@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>
+            Update ToDo
+        </title>
+        {%include "__bootstrap.html" %}
+    </head>
+    <body>
+        {%include "__navigation.html" %}
+        <div class="container mt-4">
+            {%if message%}
+                <div class="alert alert-success" role="alert">{{message}}</div>
+            {%endif%}
+            <form method="post" action="/update-to-do">
+                <input type="hidden" name="id" value="{{todo.id}}">
+                <div class="form-group">
+                    <label>Select task Priority</label>
+                    <select name="priority" class="form-control">
+                        <option value="{{todo.priority}}" selected>{{todo.priority}}</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label >Enter title</label>
+                    <input type="text" name="title" class="form-control" value="{{todo.title}}" placeholder="Enter the title">
+                </div>
+                <div class="form-group">
+                    <label >Enter description</label>
+                    <textarea name="description" class="form-control" placeholder="Enter the description">{{todo.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                
+            </form>
+
+        </div>
+    </body>
+</html>

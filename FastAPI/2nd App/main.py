@@ -61,9 +61,28 @@ async def get_to_do_list(request:Request):
 
 @app.get("/delete-to-do/{id}")
 async def delete_todo(request:Request,id:int):
-   pass
+   async with SessionLocal.begin() as session:
+      todo_service = ToDoService(session)
+      todo = await todo_service.delete_todo(id)
+      return RedirectResponse("/to-do-list?message=To do deleted successfully..",status_code=303.)
 
 
+@app.get("/update-to-do/{id}")
+async def update_todo_page(request:Request,id:int):
+    async with SessionLocal() as session:
+       todo_service = ToDoService(session)
+       todo = await todo_service.get_todo_by_id(id)
+       return templates.TemplateResponse(request,"update_todo.html",{"request":request,"todo":todo})
 
+@app.post("/update-to-do")
+async def update_todo(request:Request,id:int=Form(...),
+                      title:str=Form(...),
+                      priority:str=Form(...),
+                      description:str=Form(...)):
+      async with SessionLocal.begin() as session:
+         todo_service = ToDoService(session)
+         todo = ToDo(id=id,title=title,description=description,priority=priority)
+         db_todo = await todo_service.update_todo(todo)
+         return RedirectResponse("/to-do-list",status_code=303)
 
 
