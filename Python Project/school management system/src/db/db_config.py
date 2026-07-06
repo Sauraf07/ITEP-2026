@@ -1,12 +1,19 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+import os
 
-URL = "mysql+asyncmy://root:root@localhost:3306/school"
-engine = create_async_engine(URL,echo=True)
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy.orm import DeclarativeBase
 
-SessionLocal = async_sessionmaker(bind=engine,expire_on_commit=False)
-print("Database Connected....")
+URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./school.db")
+engine = create_async_engine(URL, echo=True)
+SessionLocal = async_sessionmaker(bind=engine, expire_on_commit=False)
+
+
 class Base(DeclarativeBase):
     pass
 
 
+async def init_db() -> None:
+    from src.model import ClassRoom, Student, Subject, Teacher  # noqa: F401
+
+    async with engine.begin() as connection:
+        await connection.run_sync(Base.metadata.create_all)
