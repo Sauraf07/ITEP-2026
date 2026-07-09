@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Login - SoftSkill Coach{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="card auth-card">
+        <h2>Login</h2>
+        <p class="subtitle">Sign in to your account</p>
+
+        <form>
+            <div>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                >
+            </div>
+
+            <div>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Login
+            </button>
+        </form>
+
+        <p class="auth-link">
+            Don't have an account? <a href="/register">Register</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - SoftSkill Coach{% endblock %}
+
+{% block container_class %}container-wide{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div>
+        <h1 id="welcome-user">Welcome back!</h1>
+        <p>Practice conversations, get feedback, and track your communication progress.</p>
+    </div>
+</div>
+
+<div class="tab-nav">
+    <button class="tab-btn active" data-tab="summary">Summary</button>
+    <button class="tab-btn" data-tab="chat">Chat</button>
+    <button class="tab-btn" data-tab="feedback">Feedback</button>
+</div>
+
+<!-- Summary Tab -->
+<div id="tab-summary" class="tab-panel active">
+    <div class="dashboard-stats">
+        <div class="stat-item">
+            <div class="stat-val" id="stat-conv-count">0</div>
+            <div class="stat-lbl">Conversations</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val" id="stat-feedback-count">0</div>
+            <div class="stat-lbl">Feedback Reports</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val" id="stat-avg-score">N/A</div>
+            <div class="stat-lbl">Average Score</div>
+        </div>
+    </div>
+
+    <div class="summary-grid">
+        <div class="card">
+            <h3 style="margin-top: 0;">How We Evaluate You</h3>
+            <ul class="info-list">
+                <li><strong>Grammar</strong> — Correct spelling, punctuation, and sentence structure.</li>
+                <li><strong>Confidence</strong> — Clear, assertive language without filler words.</li>
+                <li><strong>Vocabulary</strong> — Rich and varied word choices in your messages.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-top: 0;">Quick Actions</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem;">
+                <button class="btn-sm" onclick="switchTab('chat')">Start a Conversation</button>
+                <button class="btn-sm btn-secondary" onclick="switchTab('feedback')">View Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 1.25rem;">
+        <h3 style="margin-top: 0;">Recent Coaching Tips</h3>
+        <div id="summary-suggestions" class="recent-suggestions">
+            <p class="text-muted">Practice in chat to receive personalized coaching tips.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Chat Tab -->
+<div id="tab-chat" class="tab-panel">
+    <div class="chat-container">
+        <div class="card chat-sidebar">
+            <div class="sidebar-header">
+                <h3>Conversations</h3>
+                <button id="new-conv-btn" class="btn-sm">+ New</button>
+            </div>
+            <hr class="divider">
+            <div class="conv-list" id="conv-list">
+                <div class="loading-text">Loading...</div>
+            </div>
+        </div>
+
+        <div class="card chat-main">
+            <div class="chat-header">
+                <h3 id="active-chat-title">Select a Conversation</h3>
+            </div>
+
+            <div class="chat-messages" id="chat-box">
+                <div class="empty-state">
+                    <p>Select a conversation from the sidebar or click "+ New" to start practicing.</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <form id="chat-form" class="chat-form">
+                    <textarea
+                        placeholder="Type your message here... (we'll correct spelling and guide you)"
+                        required
+                    ></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feedback Tab -->
+<div id="tab-feedback" class="tab-panel">
+    <div id="feedback-content">
+        <div class="loading-text">Loading feedback...</div>
+    </div>
+</div>
+{% endblock %}

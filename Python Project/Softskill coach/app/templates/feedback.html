@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback - SoftSkill Coach{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div>
+        <h1>Coaching Feedback</h1>
+        <p>Scores and suggestions from your practice sessions.</p>
+    </div>
+    <a href="/dashboard"><button class="btn-sm btn-secondary">Back to Dashboard</button></a>
+</div>
+
+<div id="feedback-content">
+    <div class="loading-text">Loading feedback...</div>
+</div>
+{% endblock %}

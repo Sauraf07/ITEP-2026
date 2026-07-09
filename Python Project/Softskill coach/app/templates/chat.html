@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Coaching Chat - SoftSkill Coach{% endblock %}
+
+{% block container_class %}container-wide{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div>
+        <h1>Coaching Chat</h1>
+        <p>Practice conversations and get real-time spelling corrections and guidance.</p>
+    </div>
+    <a href="/dashboard"><button class="btn-sm btn-secondary">Back to Dashboard</button></a>
+</div>
+
+<div class="chat-container">
+    <div class="card chat-sidebar">
+        <div class="sidebar-header">
+            <h3>Conversations</h3>
+            <button id="new-conv-btn" class="btn-sm">+ New</button>
+        </div>
+        <hr class="divider">
+        <div class="conv-list" id="conv-list">
+            <div class="loading-text">Loading...</div>
+        </div>
+    </div>
+
+    <div class="card chat-main">
+        <div class="chat-header">
+            <h3 id="active-chat-title">Select a Conversation</h3>
+        </div>
+
+        <div class="chat-messages" id="chat-box">
+            <div class="empty-state">
+                <p>Select a conversation from the sidebar or click "+ New" to start practicing.</p>
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <form id="chat-form" class="chat-form">
+                <textarea
+                    placeholder="Type your message here..."
+                    required
+                ></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

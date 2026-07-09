@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}SoftSkill Coach - Improve Your Communication Skills{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Improve Your <span>Soft Skills</span> With AI Coaching</h1>
+    <p>
+        SoftSkill Coach helps you become a better communicator. Practice real conversations,
+        get instant spelling corrections, grammar feedback, and personalized guidance to
+        speak with clarity and confidence.
+    </p>
+    <div class="hero-buttons">
+        <a href="/register">
+            <button>Get Started Free</button>
+        </a>
+        <a href="/login">
+            <button class="btn-secondary">Sign In</button>
+        </a>
+    </div>
+</div>
+
+<div class="features">
+    <div class="card feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Practice Conversations</h3>
+        <p>Start new chat sessions and practice communication in a safe, guided environment.</p>
+    </div>
+    <div class="card feature-card">
+        <div class="feature-icon">✏️</div>
+        <h3>Spelling & Grammar Help</h3>
+        <p>Get real-time corrections when you make spelling mistakes or use weak phrasing.</p>
+    </div>
+    <div class="card feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Track Your Progress</h3>
+        <p>View feedback scores and coaching suggestions to see how you improve over time.</p>
+    </div>
+</div>
+{% endblock %}
