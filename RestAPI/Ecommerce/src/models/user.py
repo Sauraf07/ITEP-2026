@@ -9,6 +9,7 @@ class User(Base):
     email:Mapped[str] = mapped_column(String(100),unique=True)
     password:Mapped[str] = mapped_column(String(100))
     contact:Mapped[str] = mapped_column(String(100),unique=True)
+
     cart: Mapped["Cart"] = relationship("Cart",
                                         back_populates="user",
                                         cascade="all, delete-orphan",

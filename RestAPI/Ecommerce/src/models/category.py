@@ -12,5 +12,4 @@ class Category(Base):
 
     products: Mapped[list["Product"]] = relationship("Product",
                                                      back_populates="category",
-                                                     cascade="all, delete-orphan",
-                                                     lazy="selectin")
+                                                     cascade="all, delete-orphan")
