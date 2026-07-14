@@ -2,10 +2,11 @@ from fastapi import FastAPI
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.staticfiles import StaticFiles
 
-from src.exception import resource_not_found_exception
 from src.exception.global_exception_handler import sqlalchemy_exception_handler, unknown_exception_handler, \
     resource_not_found_exception_handler
 from src.exception.resource_not_found_exception import ResourceNotFoundException
+from src.router.product_router import router as product_router
+from src.router.cart_router import router as cart_router
 from src.router.category_router import router as  category_router
 from src.router.user_router import router as user_router
 
@@ -18,3 +19,5 @@ app.add_exception_handler(Exception,unknown_exception_handler)
 app.mount("/public", StaticFiles(directory="src/public"), name="public")
 app.include_router(user_router)
 app.include_router(category_router)
+app.include_router(product_router)
+app.include_router(cart_router)
