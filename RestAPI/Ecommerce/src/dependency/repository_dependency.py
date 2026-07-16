@@ -1,5 +1,7 @@
 from fastapi import Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
+from starlette.exceptions import HTTPException
 
 from src.db.db_config import get_session
 from src.repository.cart_items_repository import CartItemsRepository
@@ -7,8 +9,16 @@ from src.repository.cart_repository import CartRepository
 from src.repository.category_repository import CategoryRepository
 from src.repository.product_repository import ProductRepository
 from src.repository.user_repository import UserRepository
+from src.util.jwt_utils import verify_token
 
+security = HTTPBearer()
 
+def authenticate(header: HTTPAuthorizationCredentials = Depends(security)):
+    token = header.credentials
+    if not token:
+        raise HTTPException(status_code=401,detail="Invalid credentials")
+    payload = verify_token(token)
+    return payload
 def get_user_repository(session:AsyncSession=Depends(get_session)):
     return UserRepository(session)
 

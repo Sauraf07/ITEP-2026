@@ -12,3 +12,16 @@ class UserResponse(BaseModel):
     name: str
     email: EmailStr
     contact: int
+    token: str
+
+
+class UserLoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+class TokenResponse(BaseModel):
+    name: str
+    email: EmailStr
+    token: str
+
+
