@@ -10,18 +10,18 @@ router = APIRouter(prefix="/category", tags=["Category"])
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_category(category=Depends(authenticate),category_name: str = Form(...), cate_service=Depends(get_catagories_service)):
+async def create_category(category_name: str = Form(...), cate_service=Depends(get_catagories_service)):
     return await cate_service.create_category(Categories(name=category_name))
 
 @router.get("/", status_code=status.HTTP_200_OK)
-async def get_all_categories(category=Depends(authenticate),cate_service=Depends(get_catagories_service)):
+async def get_all_categories(cate_service=Depends(get_catagories_service)):
       return await cate_service.get_all_categories()
 
 @router.delete("/{category_id}", status_code=status.HTTP_200_OK)
-async def delete_category(category_id: int, cate_service=Depends(get_catagories_service),category=Depends(authenticate)):
+async def delete_category(category_id: int, cate_service=Depends(get_catagories_service)):
       return await cate_service.delete_category(category_id)
 
 @router.put("/{category_id}", status_code=status.HTTP_200_OK)
-async def update_category(category_id: int, category_name: str = Form(...), cate_service=Depends(get_catagories_service),category=Depends(authenticate)):
+async def update_category(category_id: int, category_name: str = Form(...), cate_service=Depends(get_catagories_service)):
     updated_category = Categories(name=category_name)
     return await cate_service.update_category(category_id, updated_category)

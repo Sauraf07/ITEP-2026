@@ -16,5 +16,5 @@ class UserService:
     async def login(self, request: UserResponse):
         return await self.user_repo.login(request.email, request.password)
     
-    async def profile(self, user: User):
-        return await self.user_repo.profile(user)
+    async def get_all_users(self):
+        return await self.user_repo.get_all_users()

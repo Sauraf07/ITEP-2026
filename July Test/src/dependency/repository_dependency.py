@@ -8,6 +8,7 @@ from starlette.exceptions import HTTPException
 from src.db.db_config import get_session
 from src.repository.bolg_repo import BlogRepo
 from src.repository.catagories_repo import CategoriesRepository
+from src.repository.comment_repo import CommentRepository
 from src.repository.user_repo import UserRepository
 from src.utils.jwt_utils import verify_token
 
@@ -28,3 +29,6 @@ def get_categories_repo(session:AsyncSession=Depends(get_session)):
 
 def get_blog_repo(session:AsyncSession=Depends(get_session)):
     return BlogRepo(session)
+
+def get_comments_repo(session:AsyncSession=Depends(get_session)):
+    return CommentRepository(session)

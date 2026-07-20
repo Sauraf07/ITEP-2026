@@ -1,5 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from src.excaption.resource_not_found_handler import ResourceNotFound
 from src.models.blogs import Blogs
 
 class BlogRepo:
@@ -30,7 +32,7 @@ class BlogRepo:
             await self.session.delete(blog)
             await self.session.flush()
             return True
-        return False
+        raise ResourceNotFound("Resource not found")
     
     async def update_blog(self, blog_id: int, updated_blog):
         statement = select(Blogs).where(Blogs.id == blog_id)
@@ -42,5 +44,5 @@ class BlogRepo:
             await self.session.flush()
             await self.session.refresh(blog)
             return blog
-        return None
+        raise ResourceNotFound("Resource not found")
     

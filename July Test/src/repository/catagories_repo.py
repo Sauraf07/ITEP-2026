@@ -1,5 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from src.excaption.resource_not_found_handler import ResourceNotFound
 from src.models.categories import Categories
 
 class CategoriesRepository:
@@ -25,7 +27,7 @@ class CategoriesRepository:
             await self.session.delete(category)
             await self.session.flush()
             return True
-        return False
+        raise ResourceNotFound("Category not found")
 
     async def update_category(self, category_id: int, updated_category: Categories):
         statement = select(Categories).where(Categories.id == category_id)
@@ -36,5 +38,5 @@ class CategoriesRepository:
             await self.session.flush()
             await self.session.refresh(category)
             return category
-        return None
+        raise ResourceNotFound("Category not found")
     

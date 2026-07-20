@@ -33,7 +33,6 @@ class UserRepository:
 
         return db_user
 
-    async def profile(self, user: User):
-        statement = select(User)
-        result = await self.session.execute(statement)
+    async def get_all_users(self):
+        result = await self.session.execute(select(User))
         return result.scalars().all()
