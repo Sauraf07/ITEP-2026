@@ -17,11 +17,6 @@ class CategoriesRepository:
         result = await self.session.execute(statement)
         return result.scalars().all()
     
-    async def get_category_by_id(self, category_id: int):
-        statement = select(Categories).where(Categories.id == category_id)
-        result = await self.session.execute(statement)
-        return result.scalar_one_or_none()
-    
     async def delete_category(self, category_id: int):
         statement = select(Categories).where(Categories.id == category_id)
         result = await self.session.execute(statement)

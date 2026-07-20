@@ -1,6 +1,6 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from src.utils.password import verify_password
 from src.excaption.resource_not_found_handler import ResourceNotFound
 from src.models import User
 from src.schema.user import UserRequestBody
@@ -24,8 +24,6 @@ class UserRepository:
         db_user = await self.get_user_by_email(email)
         if not db_user:
             raise ResourceNotFound("email not found")
-
-        from src.utils.password import verify_password
 
         email_match = db_user.email == email
         password_match = verify_password(password, db_user.password)

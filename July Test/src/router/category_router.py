@@ -17,11 +17,6 @@ async def create_category(category=Depends(authenticate),category_name: str = Fo
 async def get_all_categories(category=Depends(authenticate),cate_service=Depends(get_catagories_service)):
       return await cate_service.get_all_categories()
 
-
-@router.get("/{category_id}", status_code=status.HTTP_200_OK)
-async def get_category_by_id(category_id: int, cate_service=Depends(get_catagories_service),category=Depends(authenticate)):
-    return await cate_service.get_category_by_id(category_id)
-
 @router.delete("/{category_id}", status_code=status.HTTP_200_OK)
 async def delete_category(category_id: int, cate_service=Depends(get_catagories_service),category=Depends(authenticate)):
       return await cate_service.delete_category(category_id)

@@ -1,5 +1,5 @@
 from sqlalchemy import Integer, String, DateTime, func, ForeignKey
-from sqlalchemy.orm import Mapped,mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.db.db_config import Base
 
@@ -13,3 +13,14 @@ class Blogs(Base):
     create_at:Mapped[DateTime] = mapped_column(DateTime,default=func.now())
     user_id:Mapped[int] = mapped_column(Integer,ForeignKey('user.id'))
     category_id:Mapped[int] = mapped_column(Integer,ForeignKey('categories.id'))
+
+    user: Mapped["User"] = relationship("User",
+                                        back_populates="blogs"
+                                        )
+    category: Mapped["Categories"] = relationship("Categories",
+                                                back_populates="blogs"
+                                                )
+    comments: Mapped[list["Comment"]] = relationship("Comment",
+                                                     back_populates="blog",
+                                                     cascade="all, delete-orphan"
+                                                     )

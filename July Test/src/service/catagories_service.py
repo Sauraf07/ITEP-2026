@@ -12,9 +12,6 @@ class CategoriesService:
     async def get_all_categories(self):
         return await self.cata_repo.get_all_categories()
     
-    async def get_category_by_id(self, category_id: int):
-        return await self.cata_repo.get_category_by_id(category_id)
-    
     async def delete_category(self, category_id: int):
         return await self.cata_repo.delete_category(category_id)
     
