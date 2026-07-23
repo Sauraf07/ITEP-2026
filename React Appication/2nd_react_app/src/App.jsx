@@ -1,21 +1,14 @@
-import { createContext, useState } from "react"
-import First from "./components/First"
+import { Route, Routes } from "react-router-dom"
+import Nav from "./components/Nav"
+import Home from "./components/Home"
+import Contact from "./components/Contact"
+import About from "./components/About"
+import RouteConfig from "./components/RouteConfig"
 
-export const MessageContext =  createContext()
-export const CounterContext = createContext()
 function App(){
-  const [counter,setCounter] = useState(100)
   return <>
-    <h1>App Component...{counter}</h1>
-    <MessageContext.Provider value={{m1:"GM",m2:"GN"}}>
-      <CounterContext.Provider value={{counter:counter,setCounter:setCounter}}>
-       <First/>
-      </CounterContext.Provider> 
-    </MessageContext.Provider>
-    
+    <RouteConfig/>
   </>
 }
 
 export default App
-
-
