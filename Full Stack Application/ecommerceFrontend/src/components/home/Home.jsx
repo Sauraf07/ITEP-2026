@@ -23,6 +23,7 @@ function Home() {
           axios.get(Api.FETCH_CATEGORIES),
           axios.get(Api.FETCH_PRODUCTS),
         ]);
+        
         dispatch({ type: "set-categories", payload: categories.data });
         dispatch({ type: "set-products", payload: products.data });
       } catch (error) {
