@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { BASE_URL } from "../../Api";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function ViewCart(){
     const {currentUser} = useSelector((store)=>store.user)
@@ -53,7 +54,7 @@ function ViewCart(){
         }
         loadCartItems()
     },[currentUser])
-    
+    const navigation = useNavigate();
     return <>
       <Nav/>
       <div className="container mt-3">
@@ -94,7 +95,8 @@ function ViewCart(){
                 <h4 className="bg-warning text-white p-2">Bill Summery</h4>
                 <p><b>Total Item : </b>{state.cartItems.length}</p>
                 <p><b>Bill Amount :</b> <span className="text-success" style={{fontSize:"18px", fontWeight:"bolder"}}>{state.totalBillAmount} Rs.</span></p>
-                <button className="btn btn-warning">Checkout</button> 
+                <button onClick={()=>{navigation("/checkout")}} className="btn btn-warning">Check Out</button> 
+                   
             </div>
          </div>
       </div>
