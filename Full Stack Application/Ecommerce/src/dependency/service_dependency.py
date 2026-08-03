@@ -1,5 +1,5 @@
-from fastapi import Depends, HTTPException
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi import Depends
+from fastapi.security import HTTPBearer, HTTPBasicCredentials, HTTPAuthorizationCredentials
 
 from src.dependency.repository_dependency import get_user_repository, get_category_repository, get_product_repository, \
     get_cart_repository, get_cart_items_repository, get_order_repository
@@ -17,13 +17,11 @@ from src.service.user_service import UserService
 from src.util.jwt_utils import verify_token
 
 security = HTTPBearer()
-
-def authenticate(header: HTTPAuthorizationCredentials = Depends(security)):
-    token = header.credentials
-    if not token:
-        raise HTTPException(status_code=401,detail="Invalid credentials")
-    payload = verify_token(token)
-    return payload
+def authenticate(credentials: HTTPAuthorizationCredentials = Depends(security)):
+   token =  credentials.credentials
+   print(token)
+   payload = verify_token(token)
+   return payload
 
 def get_user_service(user_repo:UserRepository=Depends(get_user_repository)):
     return UserService(user_repo)
@@ -42,5 +40,11 @@ def get_cart_service(
 ):
     return CartService(user_repo,product_repo,cart_repo,cart_items_repo)
 
-def get_order_service(order_repo:OrderRepository=Depends(get_order_repository)):
-    return OrderService(order_repo)
+def get_order_service(
+    order_repo: OrderRepository = Depends(get_order_repository),
+    user_repo: UserRepository = Depends(get_user_repository),
+    cart_repo: CartRepository = Depends(get_cart_repository),
+    cart_items_repo: CartItemsRepository = Depends(get_cart_items_repository),
+):
+    return OrderService(order_repo, user_repo, cart_repo, cart_items_repo)
+

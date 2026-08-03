@@ -19,7 +19,7 @@ async def create_user(request:UserRequest,user_service = Depends(get_user_servic
 @router.post("/signin", status_code=status.HTTP_200_OK,response_model=TokenResponse)
 async def login(request: UserLoginRequest, user_service: UserService = Depends(get_user_service)):
     db_user = await user_service.sign_in(request)
-    return TokenResponse(email=db_user.email,name=db_user.name,token=generate_token({"id":db_user.id,"email":db_user.email}))
+    return TokenResponse(id=db_user.id, email=db_user.email, name=db_user.name, contact=db_user.contact, token=generate_token({"id":db_user.id,"email":db_user.email}))
 
 
 

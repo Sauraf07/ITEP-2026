@@ -6,12 +6,12 @@ class UserRequest(BaseModel):
     name: str
     email: EmailStr
     password: str
-    contact: int
+    contact: str
 
 class UserResponse(BaseModel):
     name: str
     email: EmailStr
-    contact: int
+    contact: str
     token: str
 
 
@@ -20,8 +20,10 @@ class UserLoginRequest(BaseModel):
     password: str
 
 class TokenResponse(BaseModel):
+    id: int
     name: str
     email: EmailStr
+    contact: str
     token: str
 
 

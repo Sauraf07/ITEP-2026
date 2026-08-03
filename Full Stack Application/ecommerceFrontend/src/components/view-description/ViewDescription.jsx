@@ -2,41 +2,42 @@ import { useNavigate, useParams } from "react-router-dom";
 import Nav from "../nav/Nav";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Api, { BASE_URL } from "../../Api";
+import BASE_URL  from "../../Api";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import axiosInstance from "../../axios-config/api";
 
 function ViewDescription(){
     const {id} = useParams()
     const [product,setProduct] = useState(null)
     const {isLoggedIn,currentUser} = useSelector((store)=>store.user)
     useEffect(()=>{
-        const loadProduct = async ()=>{
-            try {
-                const response = await axios.get(BASE_URL+`/product/${id}`)
-                setProduct(response.data)
-            } catch {
-                toast.error("Unable to load product.")
-            }
-        }
         loadProduct()
-    },[id])
+    },[])
+    const loadProduct = async ()=>{
+        let response = await axiosInstance.get(`/product/${id}`)
+        setProduct(response.data)
+    }
     const navigate = useNavigate()
 
     const addToCart = async()=>{
       try{  
-        if(!isLoggedIn) {
-            toast.info("please signin first")
+        if(!isLoggedIn || !currentUser?.id){
+            toast.info("Please sign in first to add items to cart")
             navigate("/signin")
-        } else {
-            const response = await axios.post(Api.ADD_TO_CART,{product_id: Number(id)}, {
-                headers: { Authorization: `Bearer ${currentUser.token}` },
-            })
-            toast.info(response.data.message)
+            return
         }
+        let response = await axiosInstance.post("/cart/",{"user_id":currentUser.id,"product_id":parseInt(id)})
+        toast.success(response.data.message || "Item added to cart successfully")
       }
       catch(err){
-        toast.error(err.response?.data?.message || "Unable to add item to cart.")
+        console.error("Add to cart error:", err)
+        const msg = err?.response?.data?.message || err?.response?.data?.detail || err?.message || "Failed to add item to cart"
+        toast.error(msg)
+        if(err?.response?.status === 401 || err?.response?.status === 403) {
+            toast.info("Session expired. Please sign in again.")
+            navigate("/signin")
+        }
       }  
     }
     return <>
@@ -45,19 +46,20 @@ function ViewDescription(){
         <button className="btn btn-secondary mb-3" onClick={()=>navigate(-1)}>Back</button>
         <div className="row">
             <div className="col-md-6">
-                <img src={`http://localhost:8000${product?.product_image}`} style={{width:"100%", height:"400px"}}/>
+                <img src={BASE_URL + product?.product_image} style={{width:"100%", height:"400px", objectFit:"cover"}} alt={product?.title}/>
             </div>
-            <div className="col-md-6 border">
+            <div className="col-md-6 border p-4">
                 <h1>{product?.title}</h1>
-                <p>{product?.description}</p>
-                <p>Rating : {product?.rating}/(5)</p>
-                <h4 className="text-success">Price : {product?.price} Rs</h4>
+                <p className="mt-3">{product?.description}</p>
+                <p>Rating : {product?.rating} / 5</p>
+                <h4 className="text-success my-3">Price : {product?.price} Rs</h4>
                 <p>Warranty Information : {product?.warranty_information}</p>
-                <button onClick={addToCart} className="btn btn-warning" style={{width:"100%"}}>Add To Cart</button>
+                <button onClick={addToCart} className="btn btn-warning text-white font-weight-bold w-100 py-2 mt-3">Add To Cart</button>
             </div>
         </div>
     </div> 
     </>
+
 }
 
 export default ViewDescription;

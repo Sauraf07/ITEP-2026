@@ -6,7 +6,8 @@ import { ToastContainer } from "react-toastify";
 import Signin from "./components/user/Signin";
 import ViewCart from "./components/view-cart/ViewCart";
 import Auth from "./components/auth/Auth";
-import Checkout from "./components/check-out/CheckOut";
+import PlaceOrder from "./components/orders/PlaceOrder";
+import CartHistory from "./components/orders/CartHistory";
 
 function App(){
   return <>
@@ -17,7 +18,8 @@ function App(){
        <Route path="/signup" element={<Signup/>}/>
        <Route path="/signin" element={<Signin/>}/>
        <Route path="/view-cart" element={<Auth><ViewCart/></Auth>}/>
-       <Route path="/checkout" element={<Auth><Checkout/></Auth>}/>
+       <Route path="/checkout" element={<Auth><PlaceOrder/></Auth>}/>
+       <Route path="/order-history" element={<Auth><CartHistory/></Auth>}/>
      </Routes>
   </>
 }

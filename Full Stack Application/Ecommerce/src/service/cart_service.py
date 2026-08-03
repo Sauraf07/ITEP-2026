@@ -43,3 +43,11 @@ class CartService:
     async def fetch_cart(self, user_id: int):
         cart = await self.cart_repo.fetch_cart_with_items_by_user_id(user_id)
         return {"cart_items": cart.cart_items if cart else []}
+
+    async def remove_from_cart(self, user_id: int, product_id: int):
+        cart = await self.cart_repo.fetch_cart_by_user_id(user_id)
+        if not cart:
+            raise ResourceNotFoundException(f"Cart for user id {user_id} not found")
+        await self.cart_item_repo.remove_cart_item(cart_id=cart.id, product_id=product_id)
+        return {"message": "Item successfully removed from cart"}
+

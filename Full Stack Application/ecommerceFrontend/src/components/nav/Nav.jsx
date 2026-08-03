@@ -30,7 +30,10 @@ function Nav() {
                    <Link className="nav-link text-white" to="/view-cart">View cart</Link>
                 </li>}
                 {isLoggedIn && <li className="nav-item">
-                    <button onClick={()=>{dispatch(signOut())}} className="nav-link btn btn-sm btn-outline-warning">Sign out</button>
+                   <Link className="nav-link text-white" to="/order-history">Cart History</Link> 
+                </li>}
+                {isLoggedIn && <li className="nav-item">
+                    <button onClick={()=>{dispatch(signOut())}} className="nav-link btn btn-sm btn-outline-warning ms-2">Sign out</button>
                 </li>}
             </ul>
 

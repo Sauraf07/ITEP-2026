@@ -4,6 +4,12 @@ from starlette.responses import JSONResponse
 from src.exception.resource_not_found_exception import ResourceNotFoundException
 
 def resource_not_found_exception_handler(request:Request,exc:ResourceNotFoundException):
+    if "registered" in exc.message.lower() or "not registered" in exc.message.lower():
+        return JSONResponse(status_code=401,
+                            content={
+                                "error": "Authentication failed",
+                                "message": exc.message
+                            })
     return JSONResponse(status_code=404,
                         content={
                             "error": "Not found",
