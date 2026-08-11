@@ -1,0 +1,747 @@
+# Python + FastAPI Interview Q&A (Simple Language + Real-Life Examples)
+
+---
+
+# PART 1: PYTHON INTERVIEW QUESTIONS
+
+## Basic Python
+
+**1. What are the features of Python?**
+Python is easy to read (like plain English), it manages memory automatically, supports both OOP and functional style, runs on any OS, and has a huge library ecosystem. Think of Python like a Swiss Army knife — one tool, many uses (web apps, automation, AI, data science).
+
+**2. Why is Python called an interpreted language?**
+Python code isn't directly turned into machine code by you — it's compiled into "bytecode" first, and then the Python Virtual Machine runs that bytecode line by line. It's like a translator reading a book aloud sentence-by-sentence instead of translating the whole book into another language first.
+
+**3. Difference between Python 2 and Python 3?**
+Python 3 is the modern, actively supported version — `print()` is a function, division works more intuitively (`5/2 = 2.5`), and Unicode is default. Python 2 is dead since 2020. It's like comparing an old Nokia phone (Python 2) to a modern smartphone (Python 3) — nobody builds new apps for the old one anymore.
+
+**4. What are Python keywords?**
+Reserved words with special meaning that you can't use as variable names — like `if`, `for`, `class`, `return`. Just like "STOP" on a road sign always means the same thing everywhere, keywords always trigger the same behavior in Python.
+
+**5. What are identifiers?**
+Names you give to variables, functions, classes, etc. Rules: letters/digits/underscore only, can't start with a digit, can't be a keyword, case-sensitive. Example: `myAge` and `myage` are two different identifiers — like "Sam" and "sam" being different usernames on some websites.
+
+**6. Explain Python's memory management.**
+Python automatically allocates and frees memory using reference counting + a garbage collector, so you don't manually manage memory like in C. It's like a hotel housekeeping staff — once a guest (object) checks out and no one else needs the room, it's automatically cleaned and freed for the next guest.
+
+**7. What is PEP 8?**
+PEP 8 is Python's official style guide — rules for naming, indentation (4 spaces), spacing, etc., so code from different developers looks consistent. It's like a company dress code — everyone dresses differently but follows the same basic rules so things look professional and consistent.
+
+**8. Difference between `==` and `is`?**
+`==` checks if values are equal; `is` checks if two variables point to the *same object in memory*. Example: two identical twins (`==` true, same looks) are not the same person (`is` false, different identity).
+
+**9. Difference between `id()` and `type()`?**
+`id()` gives the unique memory address (identity) of an object; `type()` tells you what kind of object it is (int, str, list). `id()` is like a person's Aadhar/ID number, `type()` is like their job title.
+
+**10. What are mutable and immutable objects?**
+Mutable objects can be changed after creation (list, dict, set). Immutable ones cannot (int, str, tuple). Think of a whiteboard (mutable — you can erase and rewrite) vs. a printed photo (immutable — to "change" it you must create a new one).
+
+## Data Types
+
+**11. What are Python's built-in data types?**
+int, float, complex, str, bool, list, tuple, set, dict, and `None`. These are the basic "containers" Python gives you out of the box — like the default set of tools that come with a new toolbox.
+
+**12. Difference between List and Tuple?**
+List `[1,2,3]` is mutable (can change); Tuple `(1,2,3)` is immutable (fixed once created). Use a list for your daily to-do list (keeps changing), a tuple for your birth date (never changes).
+
+**13. Difference between Set and Dictionary?**
+A set `{1,2,3}` stores unique unordered values only; a dictionary `{"a":1}` stores key-value pairs. A set is like a guest list with no duplicate names; a dictionary is like a phonebook — name (key) mapped to a phone number (value).
+
+**14. Can dictionary keys be mutable?**
+No — keys must be immutable (hashable), like strings, numbers, or tuples. Values can be anything. It's like a locker system: the locker number (key) must be fixed, but what's inside the locker (value) can change.
+
+**15. Why are tuples immutable?**
+By design, to keep data safe from accidental changes and to allow tuples to be used as dictionary keys or in sets (hashing needs immutability). Like a sealed legal contract — nobody should be able to quietly edit it after signing.
+
+**16. Shallow copy vs deep copy?**
+Shallow copy copies the outer object but inner nested objects still reference the same memory. Deep copy fully duplicates everything, including nested objects. Shallow copy is like photocopying a folder's cover but the papers inside are still the originals; deep copy photocopies everything, including the contents.
+
+**17. `copy()` vs `deepcopy()`?**
+`copy.copy()` does a shallow copy; `copy.deepcopy()` does a full deep copy (from the `copy` module). Same idea as above — one duplicates the outer wrapper, the other duplicates everything down to the last detail.
+
+**18. What is slicing?**
+Extracting a portion of a sequence using `[start:stop:step]`. Example: `"hello"[1:4]` → `"ell"`. Like cutting a specific portion of a cake using markers — start point, end point, and how thick each slice is.
+
+**19. What is negative indexing?**
+Counting from the end: `-1` is the last element, `-2` is second-last, etc. Example: `[10,20,30][-1]` → `30`. Like counting floors of a building from the rooftop downward instead of the ground up.
+
+**20. How do you remove duplicates from a list?**
+```python
+my_list = [1, 2, 2, 3, 3, 3]
+unique = list(set(my_list))
+```
+Converting to a `set` automatically drops duplicates (like putting people into a room where only unique names are allowed), then converting back to a list.
+
+## String Questions
+
+**21. Strings are immutable — what does that mean?**
+Once created, a string's content can't change in place; any "modification" creates a new string object. Like a printed name tag — if you want a new name, you print a new tag instead of erasing the old one.
+
+**22. Reverse a string without using `[::-1]`.**
+```python
+def reverse_string(s):
+    result = ""
+    for ch in s:
+        result = ch + result
+    return result
+```
+It's like reading a queue of people from back to front and calling them out one by one.
+
+**23. Count vowels in a string.**
+```python
+def count_vowels(s):
+    return sum(1 for ch in s.lower() if ch in "aeiou")
+```
+
+**24. Find duplicate characters.**
+```python
+def find_duplicates(s):
+    seen = set()
+    dupes = set()
+    for ch in s:
+        if ch in seen:
+            dupes.add(ch)
+        seen.add(ch)
+    return dupes
+```
+
+**25. Check whether a string is a palindrome.**
+```python
+def is_palindrome(s):
+    return s == s[::-1]
+```
+Like the word "madam" or "level" — reads the same forwards and backwards, like a mirror image.
+
+## Functions
+
+**26. Parameters vs arguments?**
+Parameters are the placeholder names in a function definition; arguments are the actual values you pass when calling it. `def greet(name):` — `name` is a parameter. `greet("Saurav")` — `"Saurav"` is the argument. Like a form's blank field (parameter) vs. what you actually fill in (argument).
+
+**27. Positional and keyword arguments.**
+Positional args are matched by order: `greet("Saurav", 22)`. Keyword args are matched by name: `greet(name="Saurav", age=22)`. Like ordering food by pointing at the menu position vs. explicitly saying the dish name.
+
+**28. What are `*args` and `**kwargs`?**
+`*args` collects extra positional arguments into a tuple; `**kwargs` collects extra keyword arguments into a dict. Useful when you don't know in advance how many inputs will come — like a form that accepts "any number of attachments."
+
+**29. What is a lambda function?**
+An anonymous, one-line function: `square = lambda x: x*x`. Like a quick sticky note instead of writing a full formal letter — used for small, throwaway logic.
+
+**30. Lambda vs normal function?**
+Lambda is limited to a single expression and has no name (unless assigned); a normal `def` function can have multiple lines, statements, and documentation. Lambda is a quick sketch; `def` is a full blueprint.
+
+**31. What are recursive functions?**
+A function that calls itself to solve smaller sub-problems, with a base case to stop. Example: factorial. Like Russian nesting dolls — each doll contains a smaller version of itself until you reach the smallest one.
+
+**32. What are generators?**
+Functions using `yield` that produce values one at a time, on demand, instead of building the whole result in memory at once. Like a vending machine that dispenses one item per request, instead of dumping all its stock on you at once.
+
+**33. `yield` vs `return`?**
+`return` ends the function and sends back one final value. `yield` pauses the function, sends a value, and resumes from where it left off next time it's called. `return` is like closing a shop for the day; `yield` is like a shop that serves one customer, pauses, then serves the next.
+
+**34. What are decorators?**
+Functions that wrap another function to add extra behavior without changing its original code, using `@decorator_name`. Like adding a phone case (decorator) around your phone (function) — the phone still works the same, but now has extra protection/features.
+
+**35. How do decorators work internally?**
+A decorator takes a function as input, defines a wrapper function that adds logic before/after calling the original, and returns that wrapper — which replaces the original function's name. It's function composition under the hood.
+
+## OOP
+
+**36. Four pillars of OOP?**
+Encapsulation, Abstraction, Inheritance, Polymorphism. Think of a car: Encapsulation (engine hidden under hood), Abstraction (you just use the steering wheel, not the internals), Inheritance (a "Sports Car" inherits from "Car"), Polymorphism (pressing the accelerator behaves differently in different car types).
+
+**37. Abstraction vs Encapsulation?**
+Abstraction hides *complexity* (showing only what's needed); Encapsulation hides *data* (restricting direct access). A car's dashboard is abstraction (simple interface); the locked engine bay is encapsulation (protecting internal parts).
+
+**38. Inheritance vs Composition?**
+Inheritance = "is-a" relationship (a Dog IS-A Animal). Composition = "has-a" relationship (a Car HAS-A Engine). Composition is often preferred for flexibility — like building with Lego blocks (composition) instead of being locked into one big pre-made shape (inheritance).
+
+**39. What is polymorphism?**
+Same method name behaves differently depending on the object calling it. Example: `speak()` on a Dog barks, on a Cat meows. Like a universal remote button "Play" — it works differently depending on whether it's controlling a TV, music player, or projector.
+
+**40. Explain method overriding.**
+A subclass provides its own version of a method already defined in its parent class. Example: `Cat` overrides `Animal.speak()` to make it "Meow" instead of a generic sound.
+
+**41. Method overloading in Python.**
+Python doesn't support true overloading (same method name, different signatures) like Java does — instead, you use default arguments or `*args` to mimic it. It's like having one universal charger port that adapts to multiple plug types instead of having separate ports for each.
+
+**42. What is `super()`?**
+Calls a method from the parent class inside a child class, commonly used in `__init__` to reuse parent setup logic. Like a son using his father's family recipe as a base, then adding his own twist.
+
+**43. Class variables vs instance variables.**
+Class variables are shared by all objects of the class; instance variables are unique to each object. Class variable is like a school's name (same for all students); instance variable is like each student's roll number (unique to them).
+
+**44. `@classmethod` vs `@staticmethod` vs instance methods.**
+Instance methods use `self` and access object data. `@classmethod` uses `cls` and works with the class itself (e.g., alternate constructors). `@staticmethod` takes neither — it's just a utility function living inside the class for organization.
+
+**45. What is MRO (Method Resolution Order)?**
+The order Python follows to look up methods in multiple inheritance, based on the C3 linearization algorithm. It decides "which parent's version to use" when a method exists in more than one ancestor — like a family tree deciding whose surname a child inherits when there are multiple family lines.
+
+## Exception Handling
+
+**46. What is exception handling?**
+A mechanism to catch and handle runtime errors gracefully instead of crashing the whole program. Like a safety net under a tightrope walker — if they slip, they don't fall to the ground, the net catches them.
+
+**47. Syntax errors vs runtime errors.**
+Syntax errors happen when code violates Python's grammar rules (caught before running). Runtime errors happen while the program is executing (e.g., dividing by zero). Syntax error is like a grammatically broken sentence; runtime error is like a grammatically correct sentence that still fails to make logical sense in the moment.
+
+**48. Explain `try`, `except`, `else`, `finally`.**
+`try`: code that might fail. `except`: runs if an error occurs. `else`: runs if no error occurred. `finally`: always runs, error or not (e.g., cleanup). Like: try opening a locked door, except: call a locksmith, else: walk in, finally: lock it again when done regardless.
+
+**49. How do you create a custom exception?**
+```python
+class InsufficientBalanceError(Exception):
+    pass
+
+raise InsufficientBalanceError("Not enough balance in account")
+```
+Like creating your own specific warning label instead of using a generic "Caution" sign, so people know exactly what went wrong.
+
+**50. What is exception propagation?**
+If an exception isn't handled in the function it occurs in, it moves ("bubbles up") to the calling function, and so on, until handled or the program crashes. Like a complaint escalating from a junior employee to a manager to the CEO if no one below resolves it.
+
+## File Handling
+
+**51. Modes of opening a file.**
+`'r'` read, `'w'` write (overwrite), `'a'` append, `'x'` create new, `'b'` binary, `'+'` read/write combined. Similar to choosing how you interact with a notebook: just read it, erase and rewrite it, or add new pages at the end.
+
+**52. `read()` vs `readline()` vs `readlines()`.**
+`read()` gets the whole file as one string. `readline()` gets one line at a time. `readlines()` gets all lines as a list. Like reading a whole book at once, reading page by page, or getting a stack of separated pages.
+
+**53. `write()` vs `writelines()`.**
+`write()` writes a single string. `writelines()` writes a list of strings (without adding newlines automatically). One is writing a single note; the other is pasting multiple notes at once.
+
+**54. Purpose of the `with` statement.**
+Automatically handles opening and closing resources (like files), even if an error occurs — no need to manually call `close()`. Like an automatic door that closes itself when you leave, so you never forget to shut it.
+
+**55. How do you handle large files efficiently?**
+Read line-by-line or in chunks instead of loading the entire file into memory, e.g., iterate with `for line in file:` or use generators. Like eating a large buffet one plate at a time instead of trying to fit the whole buffet table onto one plate.
+
+## Modules and Packages
+
+**56. Module vs package.**
+A module is a single `.py` file; a package is a folder of modules with an `__init__.py`. A module is one chapter; a package is the whole book containing multiple chapters.
+
+**57. What is `__init__.py`?**
+A file that marks a folder as a Python package and can run initialization code when the package is imported.
+
+**58. Explain `__name__ == "__main__"`.**
+Checks whether a script is being run directly or imported as a module elsewhere — code inside this block runs only when the file is executed directly. Like a "director's cut" section that only plays if you're watching the movie by itself, not when it's referenced/used inside another movie.
+
+**59. `import module` vs `from module import *`.**
+`import module` keeps everything under the module's namespace (`module.function()`); `from module import *` dumps everything into your current namespace directly, which can cause naming conflicts — generally discouraged.
+
+**60. What is `sys.path`?**
+A list of directories Python searches to find modules when you `import` something. Like a list of folders your computer checks when you search for a file.
+
+## Memory & Internals
+
+**61. How does Python manage memory?**
+Via a private heap, reference counting for each object, and a cyclic garbage collector to clean up reference cycles that counting alone can't catch.
+
+**62. What is reference counting?**
+Each object tracks how many references point to it; when the count hits zero, the memory is freed. Like a shared taxi — once the last passenger gets out, the taxi is free for a new ride.
+
+**63. What is the Garbage Collector?**
+A background process that detects and cleans up objects no longer needed, especially ones involved in circular references (e.g., two objects referencing each other). Like a cleanup crew that removes unused furniture that regular reference-counting missed.
+
+**64. What is the GIL (Global Interpreter Lock)?**
+A lock in CPython that allows only one thread to execute Python bytecode at a time, even on multi-core systems. Like a single-lane bridge — only one car (thread) can cross at a time, even if there are multiple lanes (cores) available elsewhere.
+
+**65. Why is Python slower than Java or C++?**
+Because it's interpreted (not compiled to native machine code), dynamically typed (type checks at runtime), and has GIL overhead for threading. The tradeoff is developer speed and simplicity over raw execution speed.
+
+**66. What is a `.pyc` file?**
+Compiled bytecode version of a `.py` file, stored to speed up future imports (skips re-compiling if source hasn't changed).
+
+**67. When is bytecode generated?**
+When a Python file is imported (or run), the source is compiled into bytecode before the Python Virtual Machine executes it.
+
+**68. Compiler vs interpreter in Python.**
+The "compiler" part converts source code into bytecode; the "interpreter" (PVM) executes that bytecode line by line at runtime. Python actually uses both stages together.
+
+## Multithreading & Multiprocessing
+
+**69. What is multithreading?**
+Running multiple threads (lightweight sub-tasks) within a single process, sharing the same memory space. Good for I/O-bound tasks (waiting for network/files). Like multiple cashiers working in the same store sharing the same cash register system.
+
+**70. Multiprocessing vs multithreading.**
+Multiprocessing runs separate processes with separate memory (true parallelism, bypasses GIL) — good for CPU-heavy work. Multithreading shares memory within one process — good for I/O-bound work but limited by GIL. Multiprocessing is like opening multiple independent stores; multithreading is like multiple staff in one store.
+
+**71. What is a daemon thread?**
+A background thread that automatically dies when the main program exits, without needing explicit cleanup. Like background music in a mall — it stops automatically when the mall closes, no manual shutdown required.
+
+**72. What is a race condition?**
+When multiple threads access/modify shared data at the same time, causing unpredictable results. Like two people editing the same Word document simultaneously without saving — whoever saves last overwrites the other's changes.
+
+**73. What is a deadlock?**
+When two or more threads/processes wait on each other for resources, and none can proceed. Like two cars stuck at a narrow bridge, each waiting for the other to reverse first.
+
+**74. What is a Lock?**
+A synchronization tool that ensures only one thread accesses a critical section of code at a time, preventing race conditions. Like a single bathroom key — only one person can use the bathroom at a time.
+
+**75. Explain the GIL with an example.**
+Even if you spawn 4 threads on a 4-core machine to do CPU-heavy math, only one thread actually executes Python bytecode at any instant because of the GIL — so you won't get true 4x speedup (multiprocessing would be better here).
+
+## Async Programming
+
+**76. What is asynchronous programming?**
+Code that can pause a task (like waiting for a network response) and let other tasks run in the meantime, instead of blocking everything. Like ordering food at a restaurant, then chatting with friends while the kitchen prepares it — you're not standing frozen at the counter.
+
+**77. Synchronous vs asynchronous.**
+Synchronous: tasks run one after another, each waiting for the previous to finish. Asynchronous: tasks can overlap, especially during waiting periods. Sync is a single-file queue at a bank; async is a token system where you're served whenever your turn/data is ready.
+
+**78. What is an event loop?**
+The core mechanism in async programming that manages and schedules multiple tasks, switching between them when one is waiting (e.g., for I/O). Like a waiter juggling multiple tables, checking on whichever table needs attention next.
+
+**79. What are `async` and `await`?**
+`async def` defines a coroutine (an async function). `await` pauses that coroutine until the awaited task completes, without blocking the whole program.
+
+**80. `asyncio.gather()` vs sequential execution.**
+`asyncio.gather()` runs multiple async tasks concurrently and waits for all to finish together (faster overall). Sequential execution runs them one after another, waiting for each to fully complete before starting the next (slower if tasks involve waiting).
+
+## Iterators & Generators
+
+**81. What is an iterator?**
+An object with `__next__()` and `__iter__()` methods that lets you traverse a sequence one item at a time. Like a bookmark that remembers exactly which page you're on in a book.
+
+**82. Iterable vs iterator.**
+An iterable is anything you can loop over (list, string). An iterator is the object actually doing the stepping through, produced by calling `iter()` on an iterable. The book is the iterable; the bookmark actively flipping pages is the iterator.
+
+**83. How does `next()` work?**
+Calls `__next__()` on an iterator to get the next value; raises `StopIteration` when there are no more items.
+
+**84. Why are generators memory efficient?**
+They produce one value at a time on demand instead of storing the entire sequence in memory at once. Like streaming a movie (generator) vs. downloading the entire movie file before watching (list).
+
+**85. What is lazy evaluation?**
+Computing values only when they're actually needed, not upfront. Generators are a prime example — nothing is computed until you ask for the next value.
+
+## Advanced Python
+
+**86. What is monkey patching?**
+Dynamically modifying or extending a class/module at runtime, without touching its original source code. Like sticking an aftermarket accessory onto a car after it's already built, changing its behavior without altering the factory design.
+
+**87. What are context managers?**
+Objects that define setup and teardown behavior using `__enter__` and `__exit__`, typically used with `with`. The file-handling `with open(...) as f:` is a classic example — auto-closes the file for you.
+
+**88. What is a metaclass?**
+A "class of a class" — it defines how classes themselves are constructed. Just like a class controls how objects behave, a metaclass controls how classes behave. It's an advanced/rarely-needed feature, like the blueprint used to design blueprints.
+
+**89. What is introspection?**
+The ability of a program to examine the type or properties of an object at runtime, e.g., `type()`, `dir()`, `isinstance()`. Like a mirror letting the program "look at itself."
+
+**90. Explain duck typing.**
+"If it walks like a duck and quacks like a duck, it's treated as a duck" — Python cares about whether an object *has* the right methods/behavior, not its exact declared type.
+
+**91. What is dependency injection?**
+Instead of a class creating its own dependencies internally, they're "injected" from outside (e.g., passed into `__init__`), making code more flexible and testable. Like a restaurant getting ingredients delivered from a supplier instead of growing everything in-house.
+
+**92. Explain SOLID principles in Python.**
+Single Responsibility (one class, one job), Open/Closed (extend without modifying), Liskov Substitution (subclasses should be usable in place of parent), Interface Segregation (small focused interfaces), Dependency Inversion (depend on abstractions, not concrete implementations). These guide writing maintainable, scalable code.
+
+**93. What are design patterns?**
+Reusable, proven solutions to common software design problems (e.g., Singleton, Factory, Observer) — like tried-and-tested recipes rather than reinventing the wheel every time.
+
+**94. Explain Singleton in Python.**
+A design pattern ensuring a class has only one instance across the whole application, e.g., a single database connection object shared everywhere instead of creating a new one each time.
+
+**95. What are dataclasses?**
+A decorator (`@dataclass`) that auto-generates boilerplate code like `__init__`, `__repr__`, and `__eq__` for classes that mainly hold data. Saves you from writing repetitive setup code manually.
+
+## Coding Questions (96–105)
+
+**96. Reverse a string.**
+```python
+s = "hello"
+print(s[::-1])
+```
+
+**97. Reverse a list.**
+```python
+lst = [1, 2, 3]
+lst.reverse()   # in-place
+# or
+reversed_lst = lst[::-1]
+```
+
+**98. Find the second-largest element.**
+```python
+def second_largest(nums):
+    unique = sorted(set(nums), reverse=True)
+    return unique[1] if len(unique) > 1 else None
+```
+
+**99. Remove duplicates.**
+```python
+lst = [1, 2, 2, 3]
+unique = list(dict.fromkeys(lst))  # preserves order
+```
+
+**100. Frequency of each character.**
+```python
+from collections import Counter
+freq = Counter("hello")  # {'h':1,'e':1,'l':2,'o':1}
+```
+
+**101. Check for a palindrome.**
+```python
+def is_palindrome(s):
+    return s == s[::-1]
+```
+
+**102. Factorial recursively.**
+```python
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+```
+
+**103. Generate Fibonacci numbers.**
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    result = []
+    for _ in range(n):
+        result.append(a)
+        a, b = b, a + b
+    return result
+```
+
+**104. Check for prime numbers.**
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+```
+
+**105. Merge two sorted lists.**
+```python
+def merge_sorted(a, b):
+    return sorted(a + b)
+```
+
+---
+
+# PART 2: FASTAPI INTERVIEW QUESTIONS
+
+## Basics
+
+**1. What is FastAPI?**
+A modern Python web framework for building APIs, known for high performance, automatic docs (Swagger), and built-in data validation using Pydantic. Like a well-organized restaurant kitchen with pre-set stations — you focus on the recipe (your logic), and the framework handles the plumbing (routing, validation, docs).
+
+**2. Why is FastAPI faster than Flask?**
+FastAPI is built on Starlette (ASGI, async-native) instead of Flask's WSGI (sync-only by default), allowing it to handle many concurrent requests efficiently, especially I/O-bound ones like database or API calls.
+
+**3. What is ASGI?**
+Asynchronous Server Gateway Interface — a standard that allows Python web apps to handle async requests (WebSockets, long-lived connections, concurrency), unlike the older WSGI standard.
+
+**4. WSGI vs ASGI.**
+WSGI handles one request at a time per worker (synchronous). ASGI supports async, handling many requests concurrently within a single worker — like a toll booth with one lane (WSGI) vs. multiple lanes with smart traffic flow (ASGI).
+
+**5. Explain the FastAPI request lifecycle.**
+Request comes in → routed to matching path function → dependencies resolved (`Depends()`) → request body validated via Pydantic → your function logic runs → response validated/serialized → sent back to client.
+
+**6. How does FastAPI generate Swagger documentation?**
+It automatically builds interactive API docs at `/docs` (Swagger UI) and `/redoc` by analyzing your route definitions, type hints, and Pydantic models — no manual doc-writing needed.
+
+**7. What is OpenAPI?**
+A standardized specification format for describing REST APIs (endpoints, parameters, responses). FastAPI auto-generates an OpenAPI schema, which Swagger UI then renders visually.
+
+## Routing
+
+**8. GET, POST, PUT, PATCH, DELETE.**
+GET: fetch data. POST: create new data. PUT: replace/update entire resource. PATCH: partially update a resource. DELETE: remove data. Like a library: GET (borrow a book to read), POST (donate a new book), PUT (replace an entire book edition), PATCH (fix a typo on one page), DELETE (remove a book from shelves).
+
+**9. What are path parameters?**
+Variables embedded directly in the URL path, e.g., `/users/{user_id}` — used to identify a specific resource.
+
+**10. What are query parameters?**
+Optional key-value pairs added after `?` in a URL, e.g., `/users?age=25&active=true` — typically used for filtering, sorting, or pagination.
+
+**11. Path vs query parameters.**
+Path params identify *which* resource (`/users/5`); query params refine *how* you want the data (`/users?sort=name`). Like a home address (path — which house) vs. delivery instructions (query — leave at gate, call before arriving).
+
+**12. How do you organize routes?**
+Using `APIRouter()` to split routes into separate files/modules by feature (e.g., `users.py`, `products.py`), then including them in the main app with `app.include_router()`. Like organizing a company into departments instead of cramming everyone into one room.
+
+## Dependency Injection
+
+**13. What is `Depends()`?**
+A FastAPI utility to declare reusable dependencies (like DB sessions, authentication checks) that get automatically resolved and passed into your route function.
+
+**14. How does dependency injection work in FastAPI?**
+You define a function (the dependency), and FastAPI calls it automatically before your route runs, passing its return value into your route's parameters via `Depends(your_function)`.
+
+**15. Can dependencies depend on other dependencies?**
+Yes — dependencies can be nested/chained; FastAPI resolves the whole tree automatically. Like a chain of approvals in an office — one manager's approval depends on another's sign-off first.
+
+**16. Why is dependency injection useful?**
+It avoids code duplication (e.g., DB session or auth logic reused across many routes), improves testability (you can swap dependencies easily in tests), and keeps route functions clean.
+
+## Pydantic
+
+**17. What is Pydantic?**
+A data validation library that uses Python type hints to validate, parse, and serialize data — FastAPI uses it heavily for request/response models. Like a strict security guard checking that every piece of incoming data matches the expected ID format before letting it through.
+
+**18. Why does FastAPI use Pydantic?**
+For automatic request validation, clear error messages, auto-generated docs, and type-safe data handling — all derived just from your Python type hints, with no extra manual validation code.
+
+**19. Request vs response models.**
+Request models define/validate the shape of incoming data (what the client sends). Response models define what data is sent back (and can hide sensitive fields like passwords).
+
+**20. `model_config = ConfigDict(from_attributes=True)`?**
+Allows a Pydantic model to be created directly from an ORM object's attributes (not just dictionaries) — essential for converting SQLAlchemy models into Pydantic response models.
+
+**21. BaseModel vs SQLAlchemy models.**
+Pydantic's `BaseModel` is for data validation/serialization (API layer). SQLAlchemy models represent database tables (persistence layer). They look similar but serve different purposes — one talks to clients, the other talks to the database.
+
+**22. What are validators?**
+Custom functions (`@field_validator` in Pydantic v2) that add extra validation logic beyond basic type checking, e.g., ensuring an email domain or a password's minimum length.
+
+## SQLAlchemy
+
+**23. What is an ORM?**
+Object-Relational Mapper — lets you interact with a database using Python classes/objects instead of writing raw SQL. Like using a translator so you can "speak Python" while it converts everything to "database language" (SQL) behind the scenes.
+
+**24. Why use SQLAlchemy?**
+It provides a Pythonic, database-agnostic way to define models, run queries, manage relationships, and handle migrations — reducing raw SQL and increasing safety/maintainability.
+
+**25. Session vs AsyncSession.**
+`Session` is for synchronous database operations; `AsyncSession` is for async operations (works with `async`/`await`, fitting FastAPI's async nature) — needed when using an async DB driver.
+
+**26. Explain the repository pattern.**
+A design pattern where database access logic is isolated into dedicated "repository" classes/functions, separate from business logic — making code cleaner and easier to test/swap databases later.
+
+**27. What is `select()`?**
+SQLAlchemy's modern (2.0-style) way to build SELECT queries: `select(User).where(User.id == 1)` — replacing the older `session.query()` style.
+
+**28. `scalar()` vs `scalars()`.**
+`scalar()` returns a single value/row (or `None`). `scalars()` returns an iterable of single-column results (useful when selecting whole model objects, not tuples).
+
+**29. What is `flush()`?**
+Sends pending changes to the database within the current transaction (so they're queryable) but doesn't permanently commit them yet — like saving a draft that's visible to you but not finalized.
+
+**30. `flush()` vs `commit()`.**
+`flush()` pushes changes to the DB temporarily within the transaction. `commit()` permanently saves the transaction and ends it. Flush is like previewing a document; commit is like hitting "publish."
+
+**31. Why do we use `refresh()`?**
+To reload an object's attributes from the database after a commit — useful for getting auto-generated fields like an `id` or `created_at` timestamp that the DB assigned.
+
+**32. `add()` vs `merge()`.**
+`add()` adds a brand-new object to the session (to be inserted). `merge()` takes a possibly-detached object and syncs it with the session, updating an existing row if it matches.
+
+## Relationships
+
+**33. One-to-One relationships.**
+Each row in Table A relates to exactly one row in Table B. Example: a User has exactly one Profile.
+
+**34. One-to-Many relationships.**
+One row in Table A relates to many rows in Table B. Example: one Author writes many Blog Posts.
+
+**35. Many-to-Many relationships.**
+Rows in Table A can relate to many rows in Table B and vice versa, usually via a junction/association table. Example: Students and Courses — a student takes many courses, and a course has many students.
+
+**36. What is `back_populates`?**
+Used in SQLAlchemy to link two related models' relationship attributes together, so updating one side automatically reflects on the other side too (keeps both directions in sync).
+
+**37. `joinedload()` vs `selectinload()`.**
+Both are eager-loading strategies to fetch related data in fewer queries. `joinedload()` uses a SQL JOIN in one query. `selectinload()` runs a separate `SELECT ... IN (...)` query for related rows — often better for one-to-many to avoid duplicate row explosion.
+
+**38. What is lazy loading?**
+Related data is only fetched from the DB when you actually access that relationship attribute — not upfront. Convenient but can cause the N+1 query problem if used carelessly.
+
+**39. What is eager loading?**
+Related data is fetched upfront, together with the main query (via JOIN or extra query), reducing the number of round-trips to the database — solves the N+1 problem.
+
+## Authentication
+
+**40. What is JWT?**
+JSON Web Token — a compact, self-contained token used to securely transmit identity/claims between client and server, commonly used for stateless authentication.
+
+**41. Explain JWT structure.**
+Three Base64-encoded parts separated by dots: Header (algorithm info), Payload (claims/user data), Signature (verifies the token wasn't tampered with) — e.g., `header.payload.signature`.
+
+**42. Authentication vs authorization.**
+Authentication verifies *who you are* (login). Authorization verifies *what you're allowed to do* (permissions). Like showing your ID at a building entrance (authentication) vs. having a keycard that only opens certain floors (authorization).
+
+**43. What is a Bearer token?**
+A token sent in the `Authorization: Bearer <token>` header — "bearer" means whoever holds/presents the token is granted access, similar to a physical ticket that anyone holding it can use.
+
+**44. Where is the JWT stored?**
+Commonly in browser localStorage, sessionStorage, or an HTTP-only cookie on the client side. HTTP-only cookies are generally more secure against XSS attacks compared to localStorage.
+
+**45. How do you protect routes?**
+Using a dependency (via `Depends()`) that verifies the JWT/token before allowing the route to execute — if invalid or missing, it raises an `HTTPException` (401 Unauthorized).
+
+**46. What is token expiration?**
+JWTs include an `exp` claim specifying when they become invalid, forcing re-authentication or token refresh after that time — limiting the damage window if a token is stolen.
+
+**47. How do you refresh a token?**
+Using a separate, longer-lived "refresh token" to request a new short-lived access token without forcing the user to log in again — like renewing a visitor pass without redoing the full ID check.
+
+## File Upload
+
+**48. `bytes` vs `UploadFile`.**
+`bytes` loads the entire file into memory at once (fine for small files). `UploadFile` streams the file using a spooled temp file, more memory-efficient for large uploads.
+
+**49. Why is `UploadFile` preferred?**
+It handles large files efficiently (doesn't load everything into RAM at once), provides useful metadata (filename, content-type), and offers async read methods.
+
+**50. How do you save uploaded files?**
+```python
+@app.post("/upload/")
+async def upload(file: UploadFile):
+    contents = await file.read()
+    with open(f"uploads/{file.filename}", "wb") as f:
+        f.write(contents)
+```
+
+**51. How do you serve static files?**
+```python
+from fastapi.staticfiles import StaticFiles
+app.mount("/static", StaticFiles(directory="static"), name="static")
+```
+
+## Middleware
+
+**52. What is middleware?**
+Code that runs before and/or after every request, useful for logging, authentication checks, or modifying requests/responses globally. Like airport security — every passenger passes through the same checkpoint regardless of destination.
+
+**53. Explain CORS.**
+Cross-Origin Resource Sharing — a browser security mechanism that controls whether a web page from one domain can make requests to an API on a different domain.
+
+**54. Why is CORS required?**
+Browsers block cross-origin requests by default for security; CORS headers explicitly tell the browser which origins/domains are allowed to access your API, e.g., allowing your frontend on `localhost:3000` to call your backend on `localhost:8000`.
+
+**55. How do you implement custom middleware?**
+```python
+@app.middleware("http")
+async def custom_middleware(request, call_next):
+    # before request logic
+    response = await call_next(request)
+    # after request logic
+    return response
+```
+
+## Exception Handling
+
+**56. What is `HTTPException`?**
+A FastAPI class for returning proper HTTP error responses (status code + message) when something goes wrong, e.g., `raise HTTPException(status_code=404, detail="User not found")`.
+
+**57. How do you create a global exception handler?**
+```python
+@app.exception_handler(CustomException)
+async def custom_exception_handler(request, exc):
+    return JSONResponse(status_code=400, content={"message": str(exc)})
+```
+This catches a specific exception type anywhere in the app and formats the response consistently.
+
+**58. Validation errors vs HTTP exceptions.**
+Validation errors are automatically raised by Pydantic when request data doesn't match the expected schema (422 status). HTTP exceptions are manually raised by you in your logic for other error cases (e.g., 404, 403).
+
+## Deployment
+
+**59. What is Uvicorn?**
+A lightning-fast ASGI server used to actually run FastAPI applications (`uvicorn main:app --reload`) — it's the engine that serves your app to the web.
+
+**60. What is Gunicorn?**
+A production-grade WSGI/process manager, often used together with Uvicorn workers (`gunicorn -k uvicorn.workers.UvicornWorker`) to manage multiple worker processes for better reliability and scaling.
+
+**61. Development vs production servers.**
+Dev servers (like `uvicorn --reload`) auto-reload on code changes and are meant for testing. Production servers run multiple stable worker processes, without auto-reload, optimized for handling real traffic reliably.
+
+**62. How do you deploy FastAPI?**
+Common options: Railway, Render, Docker containers on AWS/GCP/Azure, or a VPS with Nginx + Gunicorn/Uvicorn. Typically involves setting environment variables, a production ASGI server, and often a reverse proxy.
+
+**63. What is Docker?**
+A tool that packages your app plus all its dependencies into a portable "container" that runs identically anywhere. Like a shipping container — same box works on any ship, truck, or port regardless of what's inside.
+
+**64. Why use Docker with FastAPI?**
+Ensures your app runs the same way on your laptop, your teammate's laptop, and the production server — eliminating "it works on my machine" problems, and makes scaling/deployment more predictable.
+
+## Practical Questions
+
+**65. How would you implement pagination?**
+Using `limit` and `offset` (or `skip`) query parameters:
+```python
+@app.get("/items/")
+def get_items(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    return db.query(Item).offset(skip).limit(limit).all()
+```
+
+**66. How would you implement search?**
+Accept a query parameter and use SQL `LIKE`/`ILIKE` filtering: `db.query(Item).filter(Item.name.ilike(f"%{query}%"))`.
+
+**67. How would you upload an image?**
+Accept it via `UploadFile`, validate content-type (e.g., only `image/png`, `image/jpeg`), save it to disk or cloud storage (e.g., S3), and store the resulting file path/URL in the database.
+
+**68. How would you implement role-based authorization?**
+Store a `role` field on the User model, then create a dependency that checks the current user's role and raises a 403 error if they don't have permission for that route.
+
+**69. How would you hash passwords?**
+Using `passlib` (bcrypt): hash passwords before storing them, never store plain text, and compare hashes (not raw passwords) during login.
+```python
+from passlib.context import CryptContext
+pwd_context = CryptContext(schemes=["bcrypt"])
+hashed = pwd_context.hash("mypassword")
+```
+
+**70. How would you implement soft delete?**
+Instead of physically deleting a row, add an `is_deleted` (boolean) or `deleted_at` (timestamp) column, and filter out "deleted" rows in normal queries — keeping the data recoverable/auditable.
+
+---
+
+# SCENARIO-BASED QUESTIONS
+
+**1. Design a Blog API using FastAPI.**
+Models: `User`, `Post` (with `author_id` FK), `Comment` (with `post_id` FK). Routes: CRUD for posts (`/posts`), nested comments (`/posts/{id}/comments`), JWT auth for creating/editing, pagination for listing posts, and ownership checks so users can only edit their own posts.
+
+**2. Implement JWT authentication for a Library Management System.**
+On login, verify credentials, issue a JWT with user ID + role (e.g., "member" or "librarian") as claims. Protect routes like "issue book" or "add new book" with a `Depends()` dependency that decodes and validates the JWT, checking role permissions where needed.
+
+**3. Design the relationships for a Student-Course Enrollment System.**
+`Student` and `Course` have a Many-to-Many relationship through an `Enrollment` association table, which can also store extra data like `enrollment_date` or `grade`.
+
+**4. How would you upload profile images and store their paths in the database?**
+Accept the image via `UploadFile`, validate size/type, save it to a storage location (local `/uploads` or cloud bucket), then save the resulting file path/URL string in the `User.profile_image` column.
+
+**5. Explain how you would structure a FastAPI project using routers, services, repositories, and models.**
+- `models/` — SQLAlchemy DB models
+- `schemas/` — Pydantic request/response models
+- `repositories/` — raw DB query logic (talks to the DB)
+- `services/` — business logic (calls repositories, applies rules)
+- `routers/` — HTTP route handlers (call services, return responses)
+This layered structure keeps concerns separated — like a restaurant with distinct roles for waiters (routers), chefs (services), and stock room staff (repositories), instead of one person doing everything.
+
+**6. How would you prevent users from editing another user's blog?**
+In the update/delete route, after fetching the post, check `if post.author_id != current_user.id: raise HTTPException(403)` before allowing the operation.
+
+**7. How would you optimize an API suffering from the N+1 query problem?**
+Use eager loading (`joinedload()` or `selectinload()`) to fetch related data in one/few queries instead of triggering a separate query for each related row in a loop.
+
+**8. How would you implement a global exception handler?**
+Register handlers with `@app.exception_handler(SomeException)` for custom exceptions, and optionally override the default handler for `RequestValidationError` to return a consistent error response format across the entire API.
+
+**9. How would you add logging to your FastAPI application?**
+Use Python's built-in `logging` module, configure it at startup, and log key events (requests, errors, DB operations) — optionally add middleware to log every incoming request/response automatically.
+
+**10. How would you test your FastAPI endpoints?**
+Use `TestClient` from `fastapi.testclient` (built on `httpx`) along with `pytest`:
+```python
+from fastapi.testclient import TestClient
+client = TestClient(app)
+
+def test_get_users():
+    response = client.get("/users")
+    assert response.status_code == 200
+```
+Use a separate test database or mocked dependencies to avoid touching production data.
+
+---
+
+*Good luck with your interview prep! Focus especially on FastAPI + SQLAlchemy relationships, JWT auth, and the N+1 query problem — these come up very often in backend/AI-ML fresher interviews.*
